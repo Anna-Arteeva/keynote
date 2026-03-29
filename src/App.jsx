@@ -1,12 +1,13 @@
 import { useState, useEffect, useCallback } from 'react'
 import ShaderBackground from './components/ShaderBackground'
 import SlideLayout from './components/SlideLayout'
+import CoverSlide from './slides/CoverSlide'
 import TitleSlide from './slides/TitleSlide'
 import WhatIDoSlide from './slides/WhatIDoSlide'
 import DesignAISlide from './slides/DesignAISlide'
 import ThankYouSlide from './slides/ThankYouSlide'
 
-const slides = [TitleSlide, WhatIDoSlide, DesignAISlide, ThankYouSlide]
+const slides = [CoverSlide, TitleSlide, WhatIDoSlide, DesignAISlide, ThankYouSlide]
 
 export default function App() {
   const [current, setCurrent] = useState(0)
