@@ -1,26 +1,223 @@
 import { useState, useEffect, useCallback } from 'react'
 import ShaderBackground from './components/ShaderBackground'
 import SlideLayout from './components/SlideLayout'
+import SlideNavigator from './components/SlideNavigator'
 import CoverSlide from './slides/CoverSlide'
 import TitleSlide from './slides/TitleSlide'
-import WhatIDoSlide from './slides/WhatIDoSlide'
-import DesignAISlide from './slides/DesignAISlide'
+import LightBulbSlide from './slides/LightBulbSlide'
+import WorkflowToolsRolesSlide from './slides/WorkflowToolsRolesSlide'
+import NotWhyHereSlide from './slides/NotWhyHereSlide'
+import BuildProductSlide from './slides/BuildProductSlide'
+import ClaudeCodeSlide from './slides/ClaudeCodeSlide'
+import AfterTwoMonthsSlide from './slides/AfterTwoMonthsSlide'
+import AppShowcaseSlide from './slides/AppShowcaseSlide'
 import ThankYouSlide from './slides/ThankYouSlide'
+import AppStoreScreensSlide from './slides/AppStoreScreensSlide'
+import ChangesEverythingSlide from './slides/ChangesEverythingSlide'
+import ThreeTrendsSlide from './slides/ThreeTrendsSlide'
+import CannotMockFigmaSlide from './slides/CannotMockFigmaSlide'
+import FourParadigmsSlide from './slides/FourParadigmsSlide'
+import GenieAiSlide from './slides/GenieAiSlide'
+import InvisibleAdaptiveSlide from './slides/InvisibleAdaptiveSlide'
+import NonDeterministicSlide from './slides/NonDeterministicSlide'
+import InputOutputEveryTimeSlide from './slides/InputOutputEveryTimeSlide'
+import InputOutputVariedSlide from './slides/InputOutputVariedSlide'
+import FromCommandsToOutcomesSlide from './slides/FromCommandsToOutcomesSlide'
+import BookingVideoSlide from './slides/BookingVideoSlide'
+import PhoneFrameSlide from './slides/PhoneFrameSlide'
+import ArticulatingIntentSlide from './slides/ArticulatingIntentSlide'
+import BlankBoxSlide from './slides/BlankBoxSlide'
+import MultimodalUISlide from './slides/MultimodalUISlide'
+import ModalitiesCircleSlide from './slides/ModalitiesCircleSlide'
+import FnKeySlide from './slides/FnKeySlide'
+import GoogleLensVideoSlide from './slides/GoogleLensVideoSlide'
+import FailureModeSlide from './slides/FailureModeSlide'
+import MetasSolutionSlide from './slides/MetasSolutionSlide'
+import Paradigm2TakeawaySlide from './slides/Paradigm2TakeawaySlide'
+import PersonalisationSlide from './slides/PersonalisationSlide'
+import NetflixSlide from './slides/NetflixSlide'
+import PersonalisationExpandingSlide from './slides/PersonalisationExpandingSlide'
+import NetflixDealSlide from './slides/NetflixDealSlide'
+import ConcernDataSlide from './slides/ConcernDataSlide'
+import DesignAroundThatSlide from './slides/DesignAroundThatSlide'
+import MemoryDesignMaterialSlide from './slides/MemoryDesignMaterialSlide'
+import MemoryDashboardSlide from './slides/MemoryDashboardSlide'
+import GenerativeUISlide from './slides/GenerativeUISlide'
+import GenerativeUIImageSlide from './slides/GenerativeUIImageSlide'
+import AgenticAISlide from './slides/AgenticAISlide'
+import WhoUsesYourProductSlide from './slides/WhoUsesYourProductSlide'
+import AgentsPrimaryUsersSlide from './slides/AgentsPrimaryUsersSlide'
+import AgentsOnYourBehalfSlide from './slides/AgentsOnYourBehalfSlide'
+import AgentSafetyQuestionsSlide from './slides/AgentSafetyQuestionsSlide'
+import PerplexityVideoSlide from './slides/PerplexityVideoSlide'
+import ComplementNotReplaceSlide from './slides/ComplementNotReplaceSlide'
+import WhatCraftMeansNowSlide from './slides/WhatCraftMeansNowSlide'
+import FourConceptsMinimalSlide from './slides/FourConceptsMinimalSlide'
+import VisualToolsUndefinedSlide from './slides/VisualToolsUndefinedSlide'
+import VisualOnlyThinkingSlide from './slides/VisualOnlyThinkingSlide'
+import PrototypeWithModelsSlide from './slides/PrototypeWithModelsSlide'
+import FunctionalPrototypesExpandSlide from './slides/FunctionalPrototypesExpandSlide'
+import ConclusionQuestionSlide from './slides/ConclusionQuestionSlide'
 
-const slides = [CoverSlide, TitleSlide, WhatIDoSlide, DesignAISlide, ThankYouSlide]
+// Slide order: append new slides immediately before ThankYouSlide — closing slide must always be final.
+const slides = [
+  CoverSlide,
+  TitleSlide,
+  LightBulbSlide,
+  BuildProductSlide,
+  AppShowcaseSlide,
+  AfterTwoMonthsSlide,
+  AppStoreScreensSlide,
+  ChangesEverythingSlide,
+  ThreeTrendsSlide,
+  WorkflowToolsRolesSlide,
+  NotWhyHereSlide,
+  GenieAiSlide,
+  ClaudeCodeSlide,
+  InvisibleAdaptiveSlide,
+  CannotMockFigmaSlide,
+  FourParadigmsSlide,
+  NonDeterministicSlide,
+  InputOutputEveryTimeSlide,
+  InputOutputVariedSlide,
+  FromCommandsToOutcomesSlide,
+  BookingVideoSlide,
+  PhoneFrameSlide,
+  ArticulatingIntentSlide,
+  BlankBoxSlide,
+  MultimodalUISlide,
+  ModalitiesCircleSlide,
+  FnKeySlide,
+  GoogleLensVideoSlide,
+  FailureModeSlide,
+  MetasSolutionSlide,
+  Paradigm2TakeawaySlide,
+  PersonalisationSlide,
+  NetflixSlide,
+  PersonalisationExpandingSlide,
+  NetflixDealSlide,
+  ConcernDataSlide,
+  DesignAroundThatSlide,
+  MemoryDesignMaterialSlide,
+  MemoryDashboardSlide,
+  GenerativeUISlide,
+  GenerativeUIImageSlide,
+  AgenticAISlide,
+  WhoUsesYourProductSlide,
+  AgentsPrimaryUsersSlide,
+  AgentsOnYourBehalfSlide,
+  AgentSafetyQuestionsSlide,
+  PerplexityVideoSlide,
+  ComplementNotReplaceSlide,
+  WhatCraftMeansNowSlide,
+  FourConceptsMinimalSlide,
+  VisualToolsUndefinedSlide,
+  VisualOnlyThinkingSlide,
+  PrototypeWithModelsSlide,
+  FunctionalPrototypesExpandSlide,
+  ConclusionQuestionSlide,
+  ThankYouSlide,
+]
+
+const slideLabels = [
+  'Beyond Pixels',
+  'Hi, I am Anna',
+  'Light bulb moment',
+  'Build a product',
+  'App showcase',
+  'After 2 months',
+  'App Store screens',
+  'This changes everything',
+  'Three trends',
+  'Workflow, tools, roles',
+  'Not why I’m here',
+  'Genie AI',
+  'Claude Code',
+  'Invisible · Adaptive',
+  'Cannot mock in Figma',
+  '4 paradigms',
+  'Non-deterministic',
+  'Input A → B, every time',
+  'Same input, different outputs',
+  'From Commands to Outcomes',
+  'Booking',
+  'Device',
+  'Articulating intent',
+  'Blank box',
+  'Multimodal UI',
+  'Modalities circle',
+  'Fn key',
+  'Google Lens',
+  'Failure mode',
+  'Meta’s solution',
+  'Paradigm 2 takeaway',
+  'Personalisation',
+  'Netflix',
+  'Personalisation expanding',
+  'Netflix deal',
+  'Email · calendar · Slack',
+  'Design around that?',
+  'Memory as design material',
+  'Memory dashboard',
+  'Generative UI',
+  'Generative UI examples',
+  'Agentic AI',
+  'Who uses your product?',
+  'Agents as primary users',
+  'On your behalf',
+  'Agent safety boundaries',
+  'Perplexity video',
+  'Complement, not replace',
+  'What craft means now',
+  'Four concepts',
+  'Undefined dimensions',
+  'Visual-only thinking',
+  'Prototype with models',
+  'Functional prototypes',
+  'Conclusion question',
+  'Thank you',
+]
+
+const SLIDE_INDEX_KEY = 'keynote-slide-index'
+
+function readStoredSlideIndex() {
+  try {
+    const raw = localStorage.getItem(SLIDE_INDEX_KEY)
+    if (raw == null) return 0
+    const n = Number.parseInt(raw, 10)
+    if (!Number.isFinite(n)) return 0
+    return Math.max(0, Math.min(slides.length - 1, n))
+  } catch {
+    return 0
+  }
+}
 
 export default function App() {
-  const [current, setCurrent] = useState(0)
+  const [current, setCurrent] = useState(() => readStoredSlideIndex())
+  const [navOpen, setNavOpen] = useState(false)
 
   const goTo = useCallback((i) => {
-    setCurrent((prev) => Math.max(0, Math.min(slides.length - 1, i)))
+    setCurrent(Math.max(0, Math.min(slides.length - 1, i)))
   }, [])
 
   const next = useCallback(() => setCurrent((p) => Math.min(p + 1, slides.length - 1)), [])
   const prev = useCallback(() => setCurrent((p) => Math.max(p - 1, 0)), [])
 
   useEffect(() => {
+    try {
+      localStorage.setItem(SLIDE_INDEX_KEY, String(current))
+    } catch {
+      /* ignore quota / private mode */
+    }
+  }, [current])
+
+  useEffect(() => {
     const onKey = (e) => {
+      if (e.key === 'Escape' && navOpen) {
+        e.preventDefault()
+        setNavOpen(false)
+        return
+      }
       if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); next() }
       if (e.key === 'ArrowLeft') prev()
       if (e.key === 'f') document.documentElement.requestFullscreen?.()
@@ -28,7 +225,7 @@ export default function App() {
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [next, prev])
+  }, [next, prev, navOpen])
 
   const Slide = slides[current]
 
@@ -43,10 +240,33 @@ export default function App() {
       <ShaderBackground />
 
       <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: 1 }}>
-        <SlideLayout slideKey={current}>
+        <SlideLayout
+          slideKey={current}
+          dissolve={slides[current] === ClaudeCodeSlide}
+          style={
+            slides[current] === AppStoreScreensSlide ||
+            slides[current] === ChangesEverythingSlide ||
+            slides[current] === GenieAiSlide ||
+            slides[current] === BookingVideoSlide ||
+            slides[current] === GoogleLensVideoSlide ||
+            slides[current] === NetflixSlide ||
+            slides[current] === ClaudeCodeSlide ||
+            slides[current] === PerplexityVideoSlide
+              ? { padding: 0, alignItems: 'stretch' }
+              : undefined
+          }
+        >
           <Slide />
         </SlideLayout>
       </div>
+
+      <SlideNavigator
+        open={navOpen}
+        onOpenChange={setNavOpen}
+        currentIndex={current}
+        onSelectSlide={goTo}
+        labels={slideLabels}
+      />
 
       {/* Navigation */}
       <div style={{

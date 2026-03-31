@@ -1,12 +1,19 @@
 import { motion, AnimatePresence } from 'framer-motion'
 
-const variants = {
+const slideVariants = {
   enter: { opacity: 0, y: 30 },
   center: { opacity: 1, y: 0 },
   exit: { opacity: 0, y: -30 },
 }
 
-export default function SlideLayout({ slideKey, children, style }) {
+const dissolveVariants = {
+  enter: { opacity: 0 },
+  center: { opacity: 1 },
+  exit: { opacity: 0 },
+}
+
+export default function SlideLayout({ slideKey, children, style, dissolve }) {
+  const variants = dissolve ? dissolveVariants : slideVariants
   return (
     <AnimatePresence mode="wait">
       <motion.div
@@ -15,7 +22,11 @@ export default function SlideLayout({ slideKey, children, style }) {
         initial="enter"
         animate="center"
         exit="exit"
-        transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+        transition={
+          dissolve
+            ? { duration: 0.65, ease: [0.25, 0.1, 0.25, 1] }
+            : { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }
+        }
         style={{
           position: 'absolute',
           top: 0,

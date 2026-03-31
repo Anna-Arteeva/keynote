@@ -16,7 +16,7 @@ export default function CoverSlide() {
       <div style={{ flex: 1 }} />
       <Title size="xl" delay={0}>Beyond Pixels</Title>
       <Spacer size="sm" />
-      <Subtitle size="lg" delay={1}>
+      <Subtitle size="md" delay={1} style={{ maxWidth: 'min(88vw, 760px)' }}>
         Designing for the AI-Native Era
       </Subtitle>
       <div style={{ flex: 1 }} />
