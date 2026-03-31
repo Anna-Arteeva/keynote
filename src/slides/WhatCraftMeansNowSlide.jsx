@@ -5,7 +5,6 @@ export default function WhatCraftMeansNowSlide() {
     <SectionIntroSlide
       eyebrow="Conclusion"
       title="What Craft Means Now"
-      subtitle="Designing for humans and agents, together."
       titleSize="lg"
       accent="#f0d59e"
       secondaryAccent="#cbb9ea"
