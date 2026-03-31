@@ -5,12 +5,12 @@ import { Eyebrow, FrostedPanel, Subtitle, Title } from '../components/Typography
 const scenarios = [
   {
     issue: 'Voice fails in noise',
-    fallback: 'Audio enhancement',
+    fallback: 'Visual UI',
     accent: '#d5c6f0',
   },
   {
     issue: 'Display fails in sun',
-    fallback: 'Voice narration',
+    fallback: 'Voice UI',
     accent: '#cbe4d8',
   },
 ]
@@ -49,7 +49,6 @@ export default function MetasSolutionSlide() {
           paddingTop: 'clamp(10px, 2vh, 24px)',
         }}
       >
-        <Eyebrow style={{ textAlign: 'left' }}>Meta's pattern</Eyebrow>
         <div style={{ height: '1.4vh' }} />
         <Title size="md" delay={0.3} style={{ textAlign: 'left', maxWidth: 480, lineHeight: 1.08 }}>
           When one modality fails,
@@ -58,7 +57,7 @@ export default function MetasSolutionSlide() {
         </Title>
         <div style={{ height: '1.8vh' }} />
         <Subtitle size="sm" delay={0.8} style={{ textAlign: 'left', maxWidth: 380 }}>
-          The interface should reroute the user, not leave them stranded.
+        The future is in hybrid interfaces.
         </Subtitle>
       </div>
 

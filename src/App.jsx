@@ -24,7 +24,9 @@ import InputOutputEveryTimeSlide from './slides/InputOutputEveryTimeSlide'
 import InputOutputVariedSlide from './slides/InputOutputVariedSlide'
 import FromCommandsToOutcomesSlide from './slides/FromCommandsToOutcomesSlide'
 import BookingVideoSlide from './slides/BookingVideoSlide'
+import SupermarketSlide from './slides/SupermarketSlide'
 import PhoneFrameSlide from './slides/PhoneFrameSlide'
+import ChefSlide from './slides/ChefSlide'
 import ArticulatingIntentSlide from './slides/ArticulatingIntentSlide'
 import BlankBoxSlide from './slides/BlankBoxSlide'
 import MultimodalUISlide from './slides/MultimodalUISlide'
@@ -42,6 +44,7 @@ import ConcernDataSlide from './slides/ConcernDataSlide'
 import DesignAroundThatSlide from './slides/DesignAroundThatSlide'
 import MemoryDesignMaterialSlide from './slides/MemoryDesignMaterialSlide'
 import MemoryDashboardSlide from './slides/MemoryDashboardSlide'
+import GenerativeUISlide from './slides/GenerativeUISlide'
 import GenerativeUIImageSlide from './slides/GenerativeUIImageSlide'
 import AgenticAISlide from './slides/AgenticAISlide'
 import WhoUsesYourProductSlide from './slides/WhoUsesYourProductSlide'
@@ -76,12 +79,14 @@ const slides = [
   InvisibleAdaptiveSlide,
   CannotMockFigmaSlide,
   FourParadigmsSlide,
-  NonDeterministicSlide,
   InputOutputEveryTimeSlide,
   InputOutputVariedSlide,
+  NonDeterministicSlide,
   FromCommandsToOutcomesSlide,
   BookingVideoSlide,
+  SupermarketSlide,
   PhoneFrameSlide,
+  ChefSlide,
   ArticulatingIntentSlide,
   BlankBoxSlide,
   MultimodalUISlide,
@@ -99,6 +104,7 @@ const slides = [
   DesignAroundThatSlide,
   MemoryDesignMaterialSlide,
   MemoryDashboardSlide,
+  GenerativeUISlide,
   GenerativeUIImageSlide,
   AgenticAISlide,
   WhoUsesYourProductSlide,
@@ -134,12 +140,14 @@ const slideLabels = [
   'Invisible · Adaptive',
   'Cannot mock in Figma',
   '4 paradigms',
-  'Non-deterministic',
   'Input A → B, every time',
   'Same input, different outputs',
+  'Non-deterministic',
   'From Commands to Outcomes',
   'Booking',
+  'Supermarket',
   'Device',
+  'Chef',
   'Articulating intent',
   'Blank box',
   'Multimodal UI',
@@ -157,6 +165,7 @@ const slideLabels = [
   'Design around that?',
   'Memory as design material',
   'Memory dashboard',
+  'Generative UI',
   'Generative UI examples',
   'Agentic AI',
   'Who uses your product?',
@@ -295,6 +304,8 @@ export default function App() {
             slides[current] === ChangesEverythingSlide ||
             slides[current] === GenieAiSlide ||
             slides[current] === BookingVideoSlide ||
+            slides[current] === SupermarketSlide ||
+            slides[current] === ChefSlide ||
             slides[current] === GoogleLensVideoSlide ||
             slides[current] === NetflixSlide ||
             slides[current] === ClaudeCodeSlide ||

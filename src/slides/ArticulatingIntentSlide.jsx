@@ -5,7 +5,7 @@ export default function ArticulatingIntentSlide() {
     <SectionIntroSlide
       eyebrow="New design challenge"
       title="Humans are terrible at articulating intent"
-      subtitle="So AI products have to help people discover what they mean, not just execute what they type."
+      subtitle="Prompting experience is a design challenge."
       accent="#f2d5bc"
       secondaryAccent="#d2c5ef"
     />
