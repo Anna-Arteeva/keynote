@@ -4,7 +4,7 @@ export default function VisualToolsUndefinedSlide() {
   return (
     <SectionIntroSlide
       eyebrow="Challenge"
-      title="Visual tools left too many dimensions undefined."
+      title="Conventional design tools leave too many dimensions undefined."
       titleSize="lg"
       accent="#d8dff8"
       secondaryAccent="#f0d59e"

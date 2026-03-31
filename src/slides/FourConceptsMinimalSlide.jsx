@@ -16,8 +16,9 @@ export default function FourConceptsMinimalSlide() {
         <BulletList
           startDelay={0.2}
           items={[
-            'Self-assembling screens',
             'Probabilistic outputs',
+            'Outcome-based interactions',
+            'Voice interfaces',
             'Deep memory',
             'AI agents as users',
           ]}

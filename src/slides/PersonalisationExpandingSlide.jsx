@@ -18,8 +18,6 @@ export default function PersonalisationExpandingSlide() {
         Same movie.
         <br />
         Different thumbnail.
-        <br />
-        Based on your psychology.
       </Title>
       <Spacer size="md" />
       <img

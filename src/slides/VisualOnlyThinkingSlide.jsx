@@ -13,7 +13,7 @@ export default function VisualOnlyThinkingSlide() {
       }}
     >
       <Title size="lg" delay={0.2}>
-        Design tools limited our thinking
+        ..limiting our thinking
         <br />
         to the purely visual.
       </Title>

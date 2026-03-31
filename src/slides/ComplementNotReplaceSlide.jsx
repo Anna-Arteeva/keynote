@@ -5,7 +5,6 @@ export default function ComplementNotReplaceSlide() {
     <SectionIntroSlide
       eyebrow="Design principle"
       title="Agent experience must complement human experience."
-      subtitle="Not replace it."
       titleSize="lg"
       accent="#c6e3d8"
       secondaryAccent="#d8dff8"

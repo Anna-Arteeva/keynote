@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import ShaderBackground from './components/ShaderBackground'
 import SlideLayout from './components/SlideLayout'
 import SlideNavigator from './components/SlideNavigator'
@@ -42,7 +42,6 @@ import ConcernDataSlide from './slides/ConcernDataSlide'
 import DesignAroundThatSlide from './slides/DesignAroundThatSlide'
 import MemoryDesignMaterialSlide from './slides/MemoryDesignMaterialSlide'
 import MemoryDashboardSlide from './slides/MemoryDashboardSlide'
-import GenerativeUISlide from './slides/GenerativeUISlide'
 import GenerativeUIImageSlide from './slides/GenerativeUIImageSlide'
 import AgenticAISlide from './slides/AgenticAISlide'
 import WhoUsesYourProductSlide from './slides/WhoUsesYourProductSlide'
@@ -100,7 +99,6 @@ const slides = [
   DesignAroundThatSlide,
   MemoryDesignMaterialSlide,
   MemoryDashboardSlide,
-  GenerativeUISlide,
   GenerativeUIImageSlide,
   AgenticAISlide,
   WhoUsesYourProductSlide,
@@ -159,7 +157,6 @@ const slideLabels = [
   'Design around that?',
   'Memory as design material',
   'Memory dashboard',
-  'Generative UI',
   'Generative UI examples',
   'Agentic AI',
   'Who uses your product?',
@@ -195,6 +192,7 @@ function readStoredSlideIndex() {
 export default function App() {
   const [current, setCurrent] = useState(() => readStoredSlideIndex())
   const [navOpen, setNavOpen] = useState(false)
+  const touchStartRef = useRef(null)
 
   const goTo = useCallback((i) => {
     setCurrent(Math.max(0, Math.min(slides.length - 1, i)))
@@ -225,6 +223,55 @@ export default function App() {
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
+  }, [next, prev, navOpen])
+
+  useEffect(() => {
+    const onTouchStart = (e) => {
+      const touch = e.changedTouches?.[0]
+      if (!touch) return
+      touchStartRef.current = {
+        x: touch.clientX,
+        y: touch.clientY,
+        t: Date.now(),
+      }
+    }
+
+    const onTouchEnd = (e) => {
+      const start = touchStartRef.current
+      touchStartRef.current = null
+      if (!start || navOpen) return
+
+      const touch = e.changedTouches?.[0]
+      if (!touch) return
+
+      const dx = touch.clientX - start.x
+      const dy = touch.clientY - start.y
+      const dt = Date.now() - start.t
+
+      const minSwipeDistance = 50
+      const maxSwipeTimeMs = 800
+
+      if (Math.abs(dx) < minSwipeDistance) return
+      if (Math.abs(dx) <= Math.abs(dy)) return
+      if (dt > maxSwipeTimeMs) return
+
+      if (dx < 0) next()
+      else prev()
+    }
+
+    const onTouchCancel = () => {
+      touchStartRef.current = null
+    }
+
+    window.addEventListener('touchstart', onTouchStart, { passive: true })
+    window.addEventListener('touchend', onTouchEnd, { passive: true })
+    window.addEventListener('touchcancel', onTouchCancel, { passive: true })
+
+    return () => {
+      window.removeEventListener('touchstart', onTouchStart)
+      window.removeEventListener('touchend', onTouchEnd)
+      window.removeEventListener('touchcancel', onTouchCancel)
+    }
   }, [next, prev, navOpen])
 
   const Slide = slides[current]
@@ -273,6 +320,9 @@ export default function App() {
         position: 'fixed', bottom: 24, right: 32, zIndex: 10,
         display: 'flex', gap: 12, alignItems: 'center',
       }}>
+        <NavButton onClick={() => goTo(0)} title="Restart presentation" ariaLabel="Restart presentation">
+          &#x21BA;
+        </NavButton>
         <NavButton onClick={prev}>&larr;</NavButton>
         <span style={{
           fontFamily: "'Raleway', sans-serif",
@@ -301,10 +351,12 @@ export default function App() {
   )
 }
 
-function NavButton({ children, onClick, style }) {
+function NavButton({ children, onClick, style, title, ariaLabel }) {
   return (
     <button
       onClick={onClick}
+      title={title}
+      aria-label={ariaLabel}
       style={{
         width: 40,
         height: 40,

@@ -13,6 +13,34 @@ precision highp float;
 varying vec2 v_uv;
 uniform float u_time;
 uniform vec2 u_resolution;
+uniform float u_hueShift;
+uniform float u_noise;
+uniform float u_scan;
+uniform float u_scanFreq;
+uniform float u_warp;
+
+mat3 rgb2yiq = mat3(
+  0.299, 0.587, 0.114,
+  0.596, -0.274, -0.322,
+  0.211, -0.523, 0.312
+);
+mat3 yiq2rgb = mat3(
+  1.0, 0.956, 0.621,
+  1.0, -0.272, -0.647,
+  1.0, -1.106, 1.703
+);
+
+float rand(vec2 c) {
+  return fract(sin(dot(c, vec2(12.9898, 78.233))) * 43758.5453);
+}
+
+vec3 hueShiftRGB(vec3 col, float deg) {
+  vec3 yiq = rgb2yiq * col;
+  float rad = radians(deg);
+  float c = cos(rad), s = sin(rad);
+  vec3 yiqShift = vec3(yiq.x, yiq.y * c - yiq.z * s, yiq.y * s + yiq.z * c);
+  return clamp(yiq2rgb * yiqShift, 0.0, 1.0);
+}
 
 vec3 mod289(vec3 x) { return x - floor(x * (1.0/289.0)) * 289.0; }
 vec2 mod289(vec2 x) { return x - floor(x * (1.0/289.0)) * 289.0; }
@@ -43,6 +71,10 @@ float snoise(vec2 v) {
 
 void main() {
   vec2 uv = v_uv;
+  uv += u_warp * vec2(
+    sin((uv.y * 6.28318530718) + (u_time * 0.5)),
+    cos((uv.x * 6.28318530718) + (u_time * 0.5))
+  ) * 0.05;
   float aspect = u_resolution.x / u_resolution.y;
   float t = u_time * 0.08;
 
@@ -94,6 +126,11 @@ void main() {
   vec3 glareTint = vec3(1.0, 0.97, 0.95);
   color += (glare1+glare2+glare3+streak)*glareTint;
 
+  color = hueShiftRGB(color, u_hueShift);
+  float scanlineVal = sin(gl_FragCoord.y * u_scanFreq) * 0.5 + 0.5;
+  color *= 1.0 - (scanlineVal * scanlineVal) * u_scan;
+  color += (rand(gl_FragCoord.xy + u_time) - 0.5) * u_noise;
+
   color = clamp(color, 0.0, 1.0);
   gl_FragColor = vec4(color, 1.0);
 }`
@@ -108,7 +145,14 @@ function compileShader(gl, type, src) {
   return s
 }
 
-export default function ShaderBackground() {
+export default function ShaderBackground({
+  hueShift = 0,
+  noiseIntensity = 0,
+  scanlineIntensity = 0,
+  speed = 0.5,
+  scanlineFrequency = 0,
+  warpAmount = 0,
+}) {
   const canvasRef = useRef(null)
 
   useEffect(() => {
@@ -140,11 +184,22 @@ export default function ShaderBackground() {
 
     const uTime = gl.getUniformLocation(prog, 'u_time')
     const uRes = gl.getUniformLocation(prog, 'u_resolution')
+    const uHueShift = gl.getUniformLocation(prog, 'u_hueShift')
+    const uNoise = gl.getUniformLocation(prog, 'u_noise')
+    const uScan = gl.getUniformLocation(prog, 'u_scan')
+    const uScanFreq = gl.getUniformLocation(prog, 'u_scanFreq')
+    const uWarp = gl.getUniformLocation(prog, 'u_warp')
 
     let raf
+    const start = performance.now()
     function frame(t) {
-      gl.uniform1f(uTime, t * 0.001)
+      gl.uniform1f(uTime, ((t - start) * 0.001) * speed)
       gl.uniform2f(uRes, canvas.width, canvas.height)
+      gl.uniform1f(uHueShift, hueShift)
+      gl.uniform1f(uNoise, noiseIntensity)
+      gl.uniform1f(uScan, scanlineIntensity)
+      gl.uniform1f(uScanFreq, scanlineFrequency)
+      gl.uniform1f(uWarp, warpAmount)
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4)
       raf = requestAnimationFrame(frame)
     }
@@ -154,19 +209,80 @@ export default function ShaderBackground() {
       cancelAnimationFrame(raf)
       window.removeEventListener('resize', resize)
     }
-  }, [])
+  }, [hueShift, noiseIntensity, scanlineIntensity, speed, scanlineFrequency, warpAmount])
+
+  const noiseSvg = encodeURIComponent(`
+    <svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180">
+      <filter id="noiseFilter">
+        <feTurbulence
+          type="fractalNoise"
+          baseFrequency="0.95"
+          numOctaves="2"
+          seed="7"
+          stitchTiles="stitch"
+        />
+        <feColorMatrix type="saturate" values="0" />
+        <feComponentTransfer>
+          <feFuncA type="table" tableValues="0 0.18" />
+        </feComponentTransfer>
+      </filter>
+      <rect width="180" height="180" filter="url(#noiseFilter)" opacity="0.9" />
+    </svg>
+  `)
 
   return (
-    <canvas
-      ref={canvasRef}
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100vw',
-        height: '100vh',
-        zIndex: 0,
-      }}
-    />
+    <>
+      <style>{`
+        @keyframes noise-drift {
+          0% { transform: translate3d(0, 0, 0); }
+          25% { transform: translate3d(-2%, 1.5%, 0); }
+          50% { transform: translate3d(1.5%, -1%, 0); }
+          75% { transform: translate3d(-1%, -1.5%, 0); }
+          100% { transform: translate3d(0, 0, 0); }
+        }
+      `}</style>
+
+      <canvas
+        ref={canvasRef}
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          zIndex: 0,
+        }}
+      />
+
+      <div
+        aria-hidden
+        style={{
+          position: 'fixed',
+          inset: '-4%',
+          zIndex: 0,
+          pointerEvents: 'none',
+          opacity: 0.22,
+          mixBlendMode: 'soft-light',
+          backgroundImage: `url("data:image/svg+xml,${noiseSvg}")`,
+          backgroundSize: '180px 180px',
+          backgroundRepeat: 'repeat',
+          animation: 'noise-drift 7s steps(6) infinite',
+        }}
+      />
+
+      <div
+        aria-hidden
+        style={{
+          position: 'fixed',
+          inset: 0,
+          zIndex: 0,
+          pointerEvents: 'none',
+          opacity: 0.08,
+          mixBlendMode: 'overlay',
+          background:
+            'linear-gradient(135deg, rgba(255,255,255,0.18) 0%, transparent 38%, rgba(255,255,255,0.12) 100%)',
+        }}
+      />
+    </>
   )
 }

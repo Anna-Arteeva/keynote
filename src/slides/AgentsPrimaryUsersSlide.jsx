@@ -20,10 +20,6 @@ export default function AgentsPrimaryUsersSlide() {
         <br />
         of digital platforms.
       </Title>
-      <Spacer size="md" />
-      <Subtitle delay={1.1} size="sm" style={{ maxWidth: '720px' }}>
-        A bold shift: products increasingly need to serve software as much as they serve humans.
-      </Subtitle>
     </div>
   )
 }
