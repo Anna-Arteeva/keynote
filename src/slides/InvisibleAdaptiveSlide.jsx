@@ -7,7 +7,7 @@ const headlineSize = 'clamp(44px, 7vw, 104px)'
 const lines = [
   { text: 'Invisible.' },
   { text: 'Adaptive.' },
-  { text: 'Multimodal' },
+  { text: 'Multimodal.' },
 ]
 
 export default function InvisibleAdaptiveSlide() {
