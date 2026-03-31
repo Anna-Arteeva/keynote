@@ -43,9 +43,8 @@ export default function AfterTwoMonthsSlide() {
           </Title>
           <div style={{ height: '2vh' }} />
           <Subtitle size="sm" delay={2} style={{ textAlign: 'left', lineHeight: 1.55 }}>
-            The first shipped version was not elegant.
-            <br />
-            It was useful, awkward, and deeply educational.
+          20% of features <br />
+          Looked nothing like the design
           </Subtitle>
         </div>
       </div>
