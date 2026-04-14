@@ -13,7 +13,7 @@ export default function AgenticAISlide() {
         textAlign: 'center',
       }}
     >
-      <Eyebrow delay={0}>Paradigm 4</Eyebrow>
+      <Eyebrow delay={0}>Paradigm 5</Eyebrow>
       <div style={{ height: '1.8vh' }} />
       <Title size="xl" delay={0.35}>
         Agentic AI

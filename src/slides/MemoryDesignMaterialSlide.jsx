@@ -10,7 +10,7 @@ export default function MemoryDesignMaterialSlide() {
         padding: 'clamp(28px, 3.5vw, 44px)',
       }}
     >
-      <Eyebrow style={{ textAlign: 'left' }}>Paradigm 3 takeaway</Eyebrow>
+      <Eyebrow style={{ textAlign: 'left' }}>Paradigm 4 takeaway</Eyebrow>
       <div style={{ height: '1.6vh' }} />
       <Title size="md" delay={0.4} style={{ textAlign: 'left', maxWidth: 760 }}>
         Treat memory as a design material.

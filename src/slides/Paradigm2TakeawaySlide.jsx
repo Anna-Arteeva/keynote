@@ -9,7 +9,7 @@ export default function Paradigm2TakeawaySlide() {
         marginRight: 'auto',
       }}
     >
-      <Eyebrow>Paradigm 2 takeaway</Eyebrow>
+      <Eyebrow>Paradigm 3 takeaway</Eyebrow>
       <div style={{ height: '1.6vh' }} />
       <Title size="md" delay={0.4}>
         The screen isn't dying.

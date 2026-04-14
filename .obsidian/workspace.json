@@ -1,0 +1,214 @@
+{
+  "main": {
+    "id": "42e6e1c77acdf022",
+    "type": "split",
+    "children": [
+      {
+        "id": "1d52144e57257799",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "680e2c447bf95df8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "talk.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "talk"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "7ffc5c7ddf408248",
+    "type": "split",
+    "children": [
+      {
+        "id": "1409126e096dc334",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "979826111c09ee41",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "45d10b9a1fea5c0f",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "f511cb69cdd8f69d",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "18c6dfd8e5b53121",
+    "type": "split",
+    "children": [
+      {
+        "id": "23e6e9adac4cff8f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "43d11d8ce8d776e7",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "talk.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for talk"
+            }
+          },
+          {
+            "id": "65755e5334e1950f",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "talk.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from talk"
+            }
+          },
+          {
+            "id": "0f7af68cccf339bd",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "538904445432c064",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "3d772e4d6d1dea40",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "talk.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of talk"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "680e2c447bf95df8",
+  "lastOpenFiles": [
+    "src/slides/SmartGlassesSlide.jsx",
+    "src/assets/smart-glasses.webp",
+    "src/assets/supermarket.png",
+    "src/assets/chef.png",
+    "src/assets/super-market-chef.png",
+    "src/assets/Screenshot 2026-04-14 at 13.31.43.png",
+    "src/slides/TheaterSlide.jsx",
+    "src/assets/theater.png",
+    "src/assets/Screenshot 2026-04-14 at 13.01.49.png",
+    "dist/assets/index-0DMvcoZO.js",
+    "node_modules/set-cookie-parser/lib/set-cookie.js",
+    "node_modules/set-cookie-parser/package.json",
+    "node_modules/set-cookie-parser/lib",
+    "node_modules/set-cookie-parser/README.md",
+    "node_modules/set-cookie-parser/LICENSE",
+    "node_modules/set-cookie-parser",
+    "node_modules/cookie/dist/index.js",
+    "node_modules/cookie/dist/index.d.ts",
+    "node_modules/cookie/dist/index.js.map",
+    "node_modules/cookie/README.md",
+    "node_modules/react-router/README.md",
+    "node_modules/react-router/LICENSE.md",
+    "node_modules/react-router/CHANGELOG.md",
+    "node_modules/react-router-dom/README.md",
+    "node_modules/react-router-dom/LICENSE.md"
+  ]
+}

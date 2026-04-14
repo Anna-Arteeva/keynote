@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import ShaderBackground from './components/ShaderBackground'
 import SlideLayout from './components/SlideLayout'
 import SlideNavigator from './components/SlideNavigator'
@@ -9,7 +10,9 @@ import WorkflowToolsRolesSlide from './slides/WorkflowToolsRolesSlide'
 import NotWhyHereSlide from './slides/NotWhyHereSlide'
 import BuildProductSlide from './slides/BuildProductSlide'
 import ClaudeCodeSlide from './slides/ClaudeCodeSlide'
+import YouTellItSlide from './slides/YouTellItSlide'
 import AfterTwoMonthsSlide from './slides/AfterTwoMonthsSlide'
+import VibeCodingSlide from './slides/VibeCodingSlide'
 import AppShowcaseSlide from './slides/AppShowcaseSlide'
 import ThankYouSlide from './slides/ThankYouSlide'
 import AppStoreScreensSlide from './slides/AppStoreScreensSlide'
@@ -17,18 +20,18 @@ import ChangesEverythingSlide from './slides/ChangesEverythingSlide'
 import ThreeTrendsSlide from './slides/ThreeTrendsSlide'
 import FourParadigmsSlide from './slides/FourParadigmsSlide'
 import GenieAiSlide from './slides/GenieAiSlide'
-import InvisibleAdaptiveSlide from './slides/InvisibleAdaptiveSlide'
 import NonDeterministicSlide from './slides/NonDeterministicSlide'
 import InputOutputEveryTimeSlide from './slides/InputOutputEveryTimeSlide'
 import InputOutputVariedSlide from './slides/InputOutputVariedSlide'
+import TheaterSlide from './slides/TheaterSlide'
 import FromCommandsToOutcomesSlide from './slides/FromCommandsToOutcomesSlide'
 import BookingVideoSlide from './slides/BookingVideoSlide'
-import SupermarketSlide from './slides/SupermarketSlide'
 import PhoneFrameSlide from './slides/PhoneFrameSlide'
-import ChefSlide from './slides/ChefSlide'
+import SupermarketSlide from './slides/SupermarketSlide'
 import ArticulatingIntentSlide from './slides/ArticulatingIntentSlide'
 import BlankBoxSlide from './slides/BlankBoxSlide'
 import MultimodalUISlide from './slides/MultimodalUISlide'
+import SmartGlassesSlide from './slides/SmartGlassesSlide'
 import ModalitiesCircleSlide from './slides/ModalitiesCircleSlide'
 import FnKeySlide from './slides/FnKeySlide'
 import GoogleLensVideoSlide from './slides/GoogleLensVideoSlide'
@@ -60,6 +63,7 @@ import VisualOnlyThinkingSlide from './slides/VisualOnlyThinkingSlide'
 import PrototypeWithModelsSlide from './slides/PrototypeWithModelsSlide'
 import FunctionalPrototypesExpandSlide from './slides/FunctionalPrototypesExpandSlide'
 import ConclusionQuestionSlide from './slides/ConclusionQuestionSlide'
+import RealMissionSlide from './slides/RealMissionSlide'
 
 // Slide order: append new slides immediately before ThankYouSlide — closing slide must always be final.
 const slides = [
@@ -69,6 +73,7 @@ const slides = [
   BuildProductSlide,
   AppShowcaseSlide,
   AfterTwoMonthsSlide,
+  VibeCodingSlide,
   AppStoreScreensSlide,
   ChangesEverythingSlide,
   ThreeTrendsSlide,
@@ -76,19 +81,21 @@ const slides = [
   NotWhyHereSlide,
   GenieAiSlide,
   ClaudeCodeSlide,
-  InvisibleAdaptiveSlide,
+  YouTellItSlide,
+  RealMissionSlide,
   FourParadigmsSlide,
   InputOutputEveryTimeSlide,
   InputOutputVariedSlide,
+  TheaterSlide,
   NonDeterministicSlide,
   FromCommandsToOutcomesSlide,
   BookingVideoSlide,
-  SupermarketSlide,
   PhoneFrameSlide,
-  ChefSlide,
+  SupermarketSlide,
   ArticulatingIntentSlide,
   BlankBoxSlide,
   MultimodalUISlide,
+  SmartGlassesSlide,
   ModalitiesCircleSlide,
   FnKeySlide,
   GoogleLensVideoSlide,
@@ -130,6 +137,7 @@ const slideLabels = [
   'Build a product',
   'App showcase',
   'After 2 months',
+  'Vibe coding',
   'App Store screens',
   'This changes everything',
   'Three trends',
@@ -137,19 +145,21 @@ const slideLabels = [
   'Not why I’m here',
   'Genie AI',
   'Claude Code',
-  'Invisible · Adaptive',
+  'You tell it. It does it.',
+  'The real mission',
   '4 paradigms',
   'Input A → B, every time',
   'Same input, different outputs',
+  'Theater',
   'Non-deterministic',
   'From Commands to Outcomes',
   'Booking',
-  'Supermarket',
   'Device',
-  'Chef',
+  'Supermarket',
   'Articulating intent',
   'Blank box',
   'Multimodal UI',
+  'Smart glasses',
   'Modalities circle',
   'Fn key',
   'Google Lens',
@@ -185,6 +195,21 @@ const slideLabels = [
 ]
 
 const SLIDE_INDEX_KEY = 'keynote-slide-index'
+const slideRoutes = slides.map((Slide, index) => ({
+  index,
+  path: `/${Slide.name}`,
+}))
+const slidePathToIndex = new Map(slideRoutes.map(({ path, index }) => [path, index]))
+
+function normalizePath(pathname) {
+  if (!pathname) return '/'
+  if (pathname === '/') return pathname
+  return pathname.endsWith('/') ? pathname.slice(0, -1) : pathname
+}
+
+function getIndexFromPath(pathname) {
+  return slidePathToIndex.get(normalizePath(pathname))
+}
 
 function readStoredSlideIndex() {
   try {
@@ -199,16 +224,66 @@ function readStoredSlideIndex() {
 }
 
 export default function App() {
-  const [current, setCurrent] = useState(() => readStoredSlideIndex())
+  const navigate = useNavigate()
+  const location = useLocation()
+  const [current, setCurrent] = useState(() => {
+    if (typeof window === 'undefined') return readStoredSlideIndex()
+    const routeIndex = getIndexFromPath(window.location.pathname)
+    return routeIndex ?? readStoredSlideIndex()
+  })
   const [navOpen, setNavOpen] = useState(false)
   const touchStartRef = useRef(null)
 
   const goTo = useCallback((i) => {
-    setCurrent(Math.max(0, Math.min(slides.length - 1, i)))
-  }, [])
+    const nextIndex = Math.max(0, Math.min(slides.length - 1, i))
+    const nextPath = slideRoutes[nextIndex].path
+    setCurrent(nextIndex)
+    if (normalizePath(location.pathname) !== nextPath) {
+      navigate(nextPath)
+    }
+  }, [location.pathname, navigate])
 
-  const next = useCallback(() => setCurrent((p) => Math.min(p + 1, slides.length - 1)), [])
-  const prev = useCallback(() => setCurrent((p) => Math.max(p - 1, 0)), [])
+  const next = useCallback(() => {
+    setCurrent((p) => {
+      const nextIndex = Math.min(p + 1, slides.length - 1)
+      const nextPath = slideRoutes[nextIndex].path
+      if (normalizePath(location.pathname) !== nextPath) {
+        navigate(nextPath)
+      }
+      return nextIndex
+    })
+  }, [location.pathname, navigate])
+
+  const prev = useCallback(() => {
+    setCurrent((p) => {
+      const nextIndex = Math.max(p - 1, 0)
+      const nextPath = slideRoutes[nextIndex].path
+      if (normalizePath(location.pathname) !== nextPath) {
+        navigate(nextPath)
+      }
+      return nextIndex
+    })
+  }, [location.pathname, navigate])
+
+  useEffect(() => {
+    const routeIndex = getIndexFromPath(location.pathname)
+
+    if (routeIndex != null) {
+      if (routeIndex !== current) {
+        setCurrent(routeIndex)
+      }
+      return
+    }
+
+    if (normalizePath(location.pathname) === '/') {
+      const storedIndex = readStoredSlideIndex()
+      setCurrent(storedIndex)
+      navigate(slideRoutes[storedIndex].path, { replace: true })
+      return
+    }
+
+    navigate(slideRoutes[current].path, { replace: true })
+  }, [location.pathname, current, navigate])
 
   useEffect(() => {
     try {
@@ -291,6 +366,7 @@ export default function App() {
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Raleway:wght@400;500;600;700&display=swap');
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html, body, #root { width: 100%; height: 100%; overflow: hidden; background: #000; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
       `}</style>
 
       <ShaderBackground />
@@ -305,7 +381,7 @@ export default function App() {
             slides[current] === GenieAiSlide ||
             slides[current] === BookingVideoSlide ||
             slides[current] === SupermarketSlide ||
-            slides[current] === ChefSlide ||
+            slides[current] === SmartGlassesSlide ||
             slides[current] === GoogleLensVideoSlide ||
             slides[current] === NetflixSlide ||
             slides[current] === ClaudeCodeSlide ||
