@@ -1,4 +1,4 @@
-import { Title, BulletList, Spacer } from '../components/Typography'
+import { BulletList, Spacer, Subtitle } from '../components/Typography'
 
 export default function AgentsOnYourBehalfSlide() {
   return (
@@ -12,13 +12,9 @@ export default function AgentsOnYourBehalfSlide() {
         justifyContent: 'center',
       }}
     >
-      <Title size="md" delay={0.1} style={{ marginBottom: 'clamp(18px, 3vh, 28px)' }}>
-        On your behalf.
-      </Title>
-      <Spacer size="sm" />
       <div style={{ width: '100%', maxWidth: 720 }}>
         <BulletList
-          startDelay={0.6}
+          startDelay={0.2}
           items={[
             'Navigating the web',
             'Scraping data',
@@ -27,6 +23,10 @@ export default function AgentsOnYourBehalfSlide() {
           ]}
         />
       </div>
+      <Spacer size="md" />
+      <Subtitle size="md" delay={2.2}>
+        On your behalf.
+      </Subtitle>
     </div>
   )
 }

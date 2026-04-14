@@ -15,7 +15,6 @@ import ThankYouSlide from './slides/ThankYouSlide'
 import AppStoreScreensSlide from './slides/AppStoreScreensSlide'
 import ChangesEverythingSlide from './slides/ChangesEverythingSlide'
 import ThreeTrendsSlide from './slides/ThreeTrendsSlide'
-import CannotMockFigmaSlide from './slides/CannotMockFigmaSlide'
 import FourParadigmsSlide from './slides/FourParadigmsSlide'
 import GenieAiSlide from './slides/GenieAiSlide'
 import InvisibleAdaptiveSlide from './slides/InvisibleAdaptiveSlide'
@@ -48,6 +47,7 @@ import GenerativeUISlide from './slides/GenerativeUISlide'
 import GenerativeUIImageSlide from './slides/GenerativeUIImageSlide'
 import AgenticAISlide from './slides/AgenticAISlide'
 import WhoUsesYourProductSlide from './slides/WhoUsesYourProductSlide'
+import UserHasEyesAndFingersSlide from './slides/UserHasEyesAndFingersSlide'
 import AgentsPrimaryUsersSlide from './slides/AgentsPrimaryUsersSlide'
 import AgentsOnYourBehalfSlide from './slides/AgentsOnYourBehalfSlide'
 import AgentSafetyQuestionsSlide from './slides/AgentSafetyQuestionsSlide'
@@ -77,7 +77,6 @@ const slides = [
   GenieAiSlide,
   ClaudeCodeSlide,
   InvisibleAdaptiveSlide,
-  CannotMockFigmaSlide,
   FourParadigmsSlide,
   InputOutputEveryTimeSlide,
   InputOutputVariedSlide,
@@ -108,6 +107,7 @@ const slides = [
   GenerativeUIImageSlide,
   AgenticAISlide,
   WhoUsesYourProductSlide,
+  UserHasEyesAndFingersSlide,
   AgentsPrimaryUsersSlide,
   AgentsOnYourBehalfSlide,
   AgentSafetyQuestionsSlide,
@@ -138,7 +138,6 @@ const slideLabels = [
   'Genie AI',
   'Claude Code',
   'Invisible · Adaptive',
-  'Cannot mock in Figma',
   '4 paradigms',
   'Input A → B, every time',
   'Same input, different outputs',
@@ -169,6 +168,7 @@ const slideLabels = [
   'Generative UI examples',
   'Agentic AI',
   'Who uses your product?',
+  'Eyes and fingers',
   'Agents as primary users',
   'On your behalf',
   'Agent safety boundaries',

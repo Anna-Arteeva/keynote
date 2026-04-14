@@ -9,7 +9,7 @@ const fadeUp = {
   visible: (i) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.15, duration: 0.6, ease: [0.25, 0.1, 0.25, 1] },
+    transition: { delay: i * 0.25, duration: 1.2, ease: [0.22, 0.1, 0.2, 1] },
   }),
 }
 
@@ -35,8 +35,8 @@ class TextScramble {
     for (let i = 0; i < length; i += 1) {
       const from = oldText[i] || ''
       const to = newText[i] || ''
-      const start = Math.floor(Math.random() * 24)
-      const end = start + Math.floor(Math.random() * 22)
+      const start = Math.floor(Math.random() * 48)
+      const end = start + Math.floor(Math.random() * 44)
       this.queue.push({ from, to, start, end })
     }
 
@@ -88,12 +88,28 @@ function ScrambledTitle({ text, delay = 0 }) {
     if (!elRef.current) return undefined
 
     const scrambler = new TextScramble(elRef.current)
-    const timer = window.setTimeout(() => {
-      scrambler.setText(text)
-    }, delay * 1000)
+    let timeoutId = 0
+    let isCancelled = false
+
+    const scheduleNextRun = () => {
+      const idleDelayMs = 10000 + Math.floor(Math.random() * 5000)
+      timeoutId = window.setTimeout(runSequence, idleDelayMs)
+    }
+
+    const runSequence = async () => {
+      if (isCancelled || !elRef.current) return
+
+      elRef.current.innerText = ' '.repeat(text.length)
+      await scrambler.setText(text)
+      if (isCancelled) return
+      scheduleNextRun()
+    }
+
+    timeoutId = window.setTimeout(runSequence, delay * 1000)
 
     return () => {
-      window.clearTimeout(timer)
+      isCancelled = true
+      window.clearTimeout(timeoutId)
       scrambler.stop()
     }
   }, [text, delay])
@@ -118,9 +134,9 @@ export default function CoverSlide() {
   return (
     <>
       <div style={{ flex: 1 }} />
-      <ScrambledTitle text="Beyond Pixels" delay={0} />
+      <ScrambledTitle text="Beyond Pixels" delay={0.2} />
       <Spacer size="sm" />
-      <Subtitle size="md" delay={1} style={{ maxWidth: 'min(88vw, 760px)' }}>
+      <Subtitle size="md" delay={1.4} style={{ maxWidth: 'min(88vw, 760px)' }}>
         Designing for the AI-Native Era
       </Subtitle>
       <div style={{ flex: 1 }} />

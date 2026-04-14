@@ -3,15 +3,15 @@ import { motion } from 'framer-motion'
 const circles = [
   {
     label: 'Workflow',
-    tint: 'rgba(216, 203, 243, 0.5)',
+    tint: 'rgba(216, 203, 243, 0.3)',
   },
   {
     label: 'Tools',
-    tint: 'rgba(243, 216, 166, 0.5)',
+    tint: 'rgba(243, 216, 166, 0.3)',
   },
   {
     label: 'Roles',
-    tint: 'rgba(198, 227, 216, 0.5)',
+    tint: 'rgba(198, 227, 216, 0.3)',
   },
 ]
 
@@ -24,7 +24,7 @@ export default function WorkflowToolsRolesSlide() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        gap: 'clamp(-34px, -4vw, -18px)',
+        gap: '2rem',
         transform: 'translateY(-2vh)',
       }}
     >
@@ -47,8 +47,6 @@ export default function WorkflowToolsRolesSlide() {
             justifyContent: 'center',
             textAlign: 'center',
             background: circle.tint,
-            border: '1px solid rgba(45, 40, 70, 0.12)',
-            boxShadow: '0 18px 42px rgba(30, 25, 50, 0.08)',
             flexShrink: 0,
             position: 'relative',
             zIndex: circles.length - i,

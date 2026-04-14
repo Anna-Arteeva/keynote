@@ -1,4 +1,4 @@
-import { BulletList } from '../components/Typography'
+import { BulletList, Title } from '../components/Typography'
 
 export default function FourConceptsMinimalSlide() {
   return (
@@ -12,7 +12,18 @@ export default function FourConceptsMinimalSlide() {
         justifyContent: 'center',
       }}
     >
-      <div style={{ width: '100%', maxWidth: 700 }}>
+      <div
+        style={{
+          width: '100%',
+          maxWidth: 700,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 'clamp(32px, 4vh, 48px)',
+        }}
+      >
+        <Title size="lg" delay={0.05} style={{ textAlign: 'center' }}>
+          In the era of
+        </Title>
         <BulletList
           startDelay={0.2}
           items={[
