@@ -11,9 +11,6 @@ export default function TheaterSlide() {
         paddingRight: 'clamp(20px, 4vw, 56px)',
       }}
     >
-      <Title size="md" delay={0} style={{ textAlign: 'center', marginBottom: 'clamp(14px, 2vh, 24px)' }}>
-        Designing for AI is improvisational theatre.
-      </Title>
       <img
         src={theaterImage}
         alt="Two theater scenes showing controlled puppetry versus creative performance."
