@@ -1,0 +1,7 @@
+{
+  "rewrites": [
+    { "source": "/notes", "destination": "/notes.html" },
+    { "source": "/notes/(.*)", "destination": "/notes.html" },
+    { "source": "/((?!assets|favicon|apple-touch|site\\.webmanifest|notes).*)", "destination": "/index.html" }
+  ]
+}

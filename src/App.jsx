@@ -196,7 +196,14 @@ export default function App() {
     return routeIndex ?? readStoredSlideIndex()
   })
   const [navOpen, setNavOpen] = useState(false)
+  const [isFullscreen, setIsFullscreen] = useState(false)
   const touchStartRef = useRef(null)
+
+  useEffect(() => {
+    const onFsChange = () => setIsFullscreen(!!document.fullscreenElement)
+    document.addEventListener('fullscreenchange', onFsChange)
+    return () => document.removeEventListener('fullscreenchange', onFsChange)
+  }, [])
 
   const goTo = useCallback((i) => {
     const nextIndex = Math.max(0, Math.min(slides.length - 1, i))
@@ -357,46 +364,52 @@ export default function App() {
         </SlideLayout>
       </div>
 
-      <SlideNavigator
-        open={navOpen}
-        onOpenChange={setNavOpen}
-        currentIndex={current}
-        onSelectSlide={goTo}
-        labels={slideLabels}
-      />
+      {!isFullscreen && (
+        <SlideNavigator
+          open={navOpen}
+          onOpenChange={setNavOpen}
+          currentIndex={current}
+          onSelectSlide={goTo}
+          labels={slideLabels}
+        />
+      )}
 
       {/* Navigation */}
-      <div style={{
-        position: 'fixed', bottom: 24, right: 32, zIndex: 10,
-        display: 'flex', gap: 12, alignItems: 'center',
-      }}>
-        <NavButton onClick={() => goTo(0)} title="Restart presentation" ariaLabel="Restart presentation">
-          &#x21BA;
-        </NavButton>
-        <NavButton onClick={prev}>&larr;</NavButton>
-        <span style={{
-          fontFamily: "'Raleway', sans-serif",
-          fontWeight: 600,
-          fontSize: 14,
-          color: 'rgba(45,40,70,0.45)',
-          minWidth: 48,
-          textAlign: 'center',
+      {!isFullscreen && (
+        <div style={{
+          position: 'fixed', bottom: 24, right: 32, zIndex: 10,
+          display: 'flex', gap: 12, alignItems: 'center',
         }}>
-          {current + 1} / {slides.length}
-        </span>
-        <NavButton onClick={next}>&rarr;</NavButton>
-      </div>
+          <NavButton onClick={() => goTo(0)} title="Restart presentation" ariaLabel="Restart presentation">
+            &#x21BA;
+          </NavButton>
+          <NavButton onClick={prev}>&larr;</NavButton>
+          <span style={{
+            fontFamily: "'Raleway', sans-serif",
+            fontWeight: 600,
+            fontSize: 14,
+            color: 'rgba(45,40,70,0.45)',
+            minWidth: 48,
+            textAlign: 'center',
+          }}>
+            {current + 1} / {slides.length}
+          </span>
+          <NavButton onClick={next}>&rarr;</NavButton>
+        </div>
+      )}
 
       {/* Fullscreen */}
-      <NavButton
-        onClick={() => {
-          if (document.fullscreenElement) document.exitFullscreen()
-          else document.documentElement.requestFullscreen?.()
-        }}
-        style={{ position: 'fixed', bottom: 24, left: 32, zIndex: 10, fontSize: 16 }}
-      >
-        &#x26F6;
-      </NavButton>
+      {!isFullscreen && (
+        <NavButton
+          onClick={() => {
+            if (document.fullscreenElement) document.exitFullscreen()
+            else document.documentElement.requestFullscreen?.()
+          }}
+          style={{ position: 'fixed', bottom: 24, left: 32, zIndex: 10, fontSize: 16 }}
+        >
+          &#x26F6;
+        </NavButton>
+      )}
     </>
   )
 }
