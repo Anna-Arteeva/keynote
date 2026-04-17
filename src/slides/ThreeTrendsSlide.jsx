@@ -20,7 +20,7 @@ export default function ThreeTrendsSlide() {
     >
       <Eyebrow delay={0}>What shifted</Eyebrow>
       <Title size="lg" delay={0.35} style={{ maxWidth: 'min(94vw, 1000px)' }}>
-        Three changes that made this talk inevitable.
+        The new baseline
       </Title>
       <Spacer size="md" />
       <div style={{ width: '100%', maxWidth: 860 }}>

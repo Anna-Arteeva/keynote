@@ -64,11 +64,11 @@ Claude Code is the **fastest-growing software product ever reported**. It went v
     cue: 'You tell it. / It does it.',
     notes: `What makes a black screen so appealing?
 
-The fact that Claude Code does **the actual work for you**. You tell it what you want in plain English, and it autonomously does the research, creates a solution, fixes its own mistakes and publishes the end result. **It is doing the work for you.**`,
+You tell it what you want in plain English. It does the research, creates a solution, fixes its own mistakes, and publishes the result. **It does the work for you**.`,
   },
   {
     cue: 'The real shift is bigger than workflow',
-    notes: `Do you see the irony? If we have the power to build beautiful visual interfaces, why is a plain text terminal winning? It's because a beautiful visual interface still requires you to do the manual labour \u2014 clicking, navigating, executing. You still have to drive the car. The text terminal is winning because **the machine is finally executing on our behalf**.`,
+    notes: `So why is a plain text terminal beating beautiful visual interfaces? Because a beautiful interface still requires you to click, navigate, execute. The terminal is winning because **the machine is finally doing the work on your behalf**.`,
   },
   {
     cue: 'UX paradigm',

@@ -15,7 +15,6 @@ import VibeCodingSlide from './slides/VibeCodingSlide'
 import AppShowcaseSlide from './slides/AppShowcaseSlide'
 import ThankYouSlide from './slides/ThankYouSlide'
 import AppStoreScreensSlide from './slides/AppStoreScreensSlide'
-import ChangesEverythingSlide from './slides/ChangesEverythingSlide'
 import ThreeTrendsSlide from './slides/ThreeTrendsSlide'
 import FourParadigmsSlide from './slides/FourParadigmsSlide'
 import GenieAiSlide from './slides/GenieAiSlide'
@@ -69,7 +68,6 @@ const slides = [
   AfterTwoMonthsSlide,
   VibeCodingSlide,
   AppStoreScreensSlide,
-  ChangesEverythingSlide,
   ThreeTrendsSlide,
   NotWhyHereSlide,
   GenieAiSlide,
@@ -127,7 +125,6 @@ const slideLabels = [
   'After 2 months',
   'Vibe coding',
   'App Store screens',
-  'This changes everything',
   'Three trends',
   'Not why I’m here',
   'Genie AI',
