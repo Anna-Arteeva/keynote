@@ -263,7 +263,7 @@ Our tools have always shaped our thinking. When all we had were visual design to
 
 *[...limiting our thinking to the purely visual.]*
 
-But it does not cut it anymore. Now our design toolbox should include live AI models, real APIs, real data. And **the moment you can build with these materials, you start designing with them**.
+But it does not cut it anymore. Now our design toolbox should include live AI models, real APIs, real data. And **the moment you can build with these materials, you start designing for them**.
 
 *[Now we can prototype with: "The new design materials" — LLMs, Voice models, Vision models, Agents]*
 
@@ -271,11 +271,11 @@ But it does not cut it anymore. Now our design toolbox should include live AI mo
 
 **The craft isn't pixels anymore. It's systems.**
 
-Connected systems that span modalities, memory, reasoning. Even when the best design decision is **completely invisible**.
+Connected systems that span modalities, memory, reasoning. Even when the best design solution is **completely invisible**.
 
-You cannot design these experiences in static tools. You have to build them. That means **code is now a design skill**. Not optional. Not a nice-to-have. A core competency. 
+You cannot design these experiences in static tools. You have to build them. That designing in **code is not optional** when you want to shape AI-powered experiences. 
 
-To shape AI-powered experiences, you need to understand the technology underneath — how models think, where they fail, what they can and can't do. That understanding is what separates **designing for AI from decorating around it**.
+You need to understand the technology underneath — how models think, where they fail, what they can and can't do. That understanding is what separates **designing for AI from decorating around it**.
 
 The good news - coding with AI has just became so much easier. 
 

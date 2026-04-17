@@ -46,7 +46,6 @@ import ConcernDataSlide from './slides/ConcernDataSlide'
 import DesignAroundThatSlide from './slides/DesignAroundThatSlide'
 import MemoryDesignMaterialSlide from './slides/MemoryDesignMaterialSlide'
 import MemoryDashboardSlide from './slides/MemoryDashboardSlide'
-import WhatCraftMeansNowSlide from './slides/WhatCraftMeansNowSlide'
 import DesignCraftQuestionSlide from './slides/DesignCraftQuestionSlide'
 import FourConceptsMinimalSlide from './slides/FourConceptsMinimalSlide'
 import VisualToolsUndefinedSlide from './slides/VisualToolsUndefinedSlide'
@@ -102,9 +101,8 @@ const slides = [
   DesignAroundThatSlide,
   MemoryDesignMaterialSlide,
   MemoryDashboardSlide,
-  WhatCraftMeansNowSlide,
-  DesignCraftQuestionSlide,
   FourConceptsMinimalSlide,
+  DesignCraftQuestionSlide,
   VisualToolsUndefinedSlide,
   VisualOnlyThinkingSlide,
   PrototypeWithModelsSlide,
@@ -158,9 +156,8 @@ const slideLabels = [
   'Design around that?',
   'Memory as design material',
   'Memory dashboard',
-  'What craft means now',
-  'So what does design craft mean?',
   'Four concepts',
+  'So what does design craft mean?',
   'Undefined dimensions',
   'Visual-only thinking',
   'Prototype with models',
