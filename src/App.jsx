@@ -36,7 +36,6 @@ import SmartGlassesSlide from './slides/SmartGlassesSlide'
 import BitterballenQuoteSlide from './slides/BitterballenQuoteSlide'
 import ModalitiesCircleSlide from './slides/ModalitiesCircleSlide'
 import FnKeySlide from './slides/FnKeySlide'
-import GoogleLensVideoSlide from './slides/GoogleLensVideoSlide'
 import MetasSolutionSlide from './slides/MetasSolutionSlide'
 import Paradigm2TakeawaySlide from './slides/Paradigm2TakeawaySlide'
 import PersonalisationSlide from './slides/PersonalisationSlide'
@@ -93,7 +92,6 @@ const slides = [
   ModalitiesCircleSlide,
   MultimodalUISlide,
   FnKeySlide,
-  GoogleLensVideoSlide,
   MetasSolutionSlide,
   Paradigm2TakeawaySlide,
   PersonalisationSlide,
@@ -150,7 +148,6 @@ const slideLabels = [
   'Modalities circle',
   'Multimodal UI',
   'Fn key',
-  'Google Lens',
   'Meta’s solution',
   'Paradigm 3 takeaway',
   'Personalisation',
@@ -362,12 +359,10 @@ export default function App() {
           dissolve={slides[current] === ClaudeCodeSlide}
           style={
             slides[current] === AppStoreScreensSlide ||
-            slides[current] === ChangesEverythingSlide ||
             slides[current] === GenieAiSlide ||
             slides[current] === BookingVideoSlide ||
             slides[current] === SupermarketSlide ||
             slides[current] === SmartGlassesSlide ||
-            slides[current] === GoogleLensVideoSlide ||
             slides[current] === NetflixSlide ||
             slides[current] === ClaudeCodeSlide
               ? { padding: 0, alignItems: 'stretch' }
