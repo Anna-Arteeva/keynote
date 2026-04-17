@@ -205,11 +205,13 @@ But in code, you connect to a voice model in minutes. And then the real design w
 
 ---
 
+*[slide: Anticipating what the user needs]*
+
+But taking input in new ways is only half the story. The next level is **anticipating what the user needs before they say it**.
+
 *[PERSONALISATION]*
 
 ### PARADIGM 4: PERSONALISATION
-
-But taking input in new ways is only half the story. The next level is **anticipating what the user needs before they say it**.
 
 The most successful products adapt fluidly to their users — their preferences, their context — going as far as adapting to our psychology.
 

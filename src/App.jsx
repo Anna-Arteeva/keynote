@@ -38,6 +38,7 @@ import ModalitiesCircleSlide from './slides/ModalitiesCircleSlide'
 import FnKeySlide from './slides/FnKeySlide'
 import MetasSolutionSlide from './slides/MetasSolutionSlide'
 import Paradigm2TakeawaySlide from './slides/Paradigm2TakeawaySlide'
+import AnticipatingUserNeedsSlide from './slides/AnticipatingUserNeedsSlide'
 import PersonalisationSlide from './slides/PersonalisationSlide'
 import NetflixSlide from './slides/NetflixSlide'
 import PersonalisationExpandingSlide from './slides/PersonalisationExpandingSlide'
@@ -75,8 +76,8 @@ const slides = [
   FourParadigmsSlide,
   InputOutputEveryTimeSlide,
   InputOutputVariedSlide,
-  TheaterSlide,
   NonDeterministicSlide,
+  TheaterSlide,
   DynamicDesignEnvironmentSlide,
   FromCommandsToOutcomesSlide,
   BookingVideoSlide,
@@ -93,6 +94,7 @@ const slides = [
   FnKeySlide,
   MetasSolutionSlide,
   Paradigm2TakeawaySlide,
+  AnticipatingUserNeedsSlide,
   PersonalisationSlide,
   NetflixSlide,
   PersonalisationExpandingSlide,
@@ -130,8 +132,8 @@ const slideLabels = [
   '4 paradigms',
   'Input A → B, every time',
   'Same input, different outputs',
-  'Theater',
   'Non-deterministic',
+  'Theater',
   'Dynamic design environment',
   'From Commands to Outcomes',
   'Booking',
@@ -148,6 +150,7 @@ const slideLabels = [
   'Fn key',
   'Meta’s solution',
   'Paradigm 3 takeaway',
+  'Anticipating what the user needs',
   'Personalisation',
   'Netflix',
   'Personalisation expanding',
