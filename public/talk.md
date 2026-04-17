@@ -9,35 +9,35 @@
 I'm a designer, a design leader—and for the last year, I've had an accidental career of teaching designers and PMs how to build with AI.
 
 My journey into this started about 2 years ago. 
-*[slide: the light bulb moment]*
+*[the light bulb moment]*
 I'd spent a decade designing other people's products, and I thought: why not try to build my own? 
 
-*[slide: I decided to build a product]*
+*[I decided to build a product]*
 
 I even convinced a senior engineer friend to join my venture.
 
-*[slide: istorio screens]*
+*[istorio screens]*
 We picked a simple idea—a language-learning app. I played the design process by the book. One month interviewing potential users, putting together a beautiful prototype in Figma. 
 Testing, iterating. Then he spent another month building it. And after that we had this
 
-*[slide: the ugly product]*
+*[the ugly product]*
 
 It looked nothing like my design. It could barely do anything. 
 
 Slowly, we lost steam, went our separate ways.
 
 That would have been the end of the story, if I hadn't heard about vibe-coding right after that.
-*[slide: Vibe coding]*
+*[Vibe coding]*
 
 I thought, what do I have to lose? Three days later, I had built my app. It looked like my design. It did everything I wanted it to do. A month later, I released it to the App Store.
 
-*[Slide: This changes everything]*
+*[This changes everything]*
 
 And I never opened it again.
 
 Because I realised that my visually polished app offers **a learning experience of the past, not of the future**.
 
-*[Slide: Three changes that made this talk inevitable.]*
+*[Three changes that made this talk inevitable.]*
 
 Now you wouldn't surprise anyone with that story. AI prototyping is becoming a standard requirement for design and product roles. I've had people cancel their Figma subscriptions in the middle of my course. Some companies claim their designers now own the front-end entirely. 
 
@@ -51,13 +51,13 @@ It is not the story I came to Rotterdam to tell.
 
 We can now vibe-code — entirely ourselves, as designers — the most visually polished interfaces that have ever existed. Silk-smooth animations. Polished micro-interactions. Shaders that stop your scroll. Effects that would have taken a team a month — vibe-coded in a single afternoon. 
 
-*[slide: video or beautiful interaction]*
+*[video or beautiful interaction]*
 
 And yet, the fastest-growing product right now has **no UI at all**. 
 
 A terminal.
 
-*[slide: Claude Code screenshot]*
+*[Claude Code screenshot]*
 
 Claude Code is the **fastest-growing software product ever reported**. It went viral not only with developers, but with non-technical users. People who had never opened a terminal in their lives, happily talking to a command line.
 
@@ -65,7 +65,7 @@ What makes a black screen so appealing?
 
 You tell it what you want in plain English. It does the research, creates a solution, fixes its own mistakes, and publishes the result.
 
-*[slide: You tell it. / It does it.]*
+*[You tell it. / It does it.]*
 
 In the meantime a beautiful interface still requires you to click, navigate, execute. The terminal is winning because **it is doing the work for you**.
 
@@ -73,7 +73,7 @@ In the meantime a beautiful interface still requires you to click, navigate, exe
 
 But the moment the machine is doing the work, something fundamental changes. **You lose predictability**, taking me to the first UX paradigm that defines this new AI era. 
 
-*[slide: UX paradigm]*
+*[UX paradigm]*
 
 ---
 
@@ -81,17 +81,17 @@ But the moment the machine is doing the work, something fundamental changes. **Y
 
 Until recently, we operated on a simple model.
 
-*[slide: input A -> output B]*
+*[input A -> output B]*
 
 The system gave you the exact same predetermined response every time you took an action. Every single time. Input A equals output B. Systems were **deterministic**.
 
-*[slide: input A -> output B, C, D]*
+*[input A -> output B, C, D]*
 
 Today, even if you provide the exact same input, an AI might produce wildly different outputs. It is **non-deterministic**.
 
 Traditional software design was like directing a scripted play. Every actor knew their lines. The lighting director knew exactly when to hit the spotlight. If someone forgot a line, that was a bug — you stopped the play to fix it.
 
-*[slide: theatre]*
+*[theatre]*
 
 **Designing for AI is improvisational theatre.**
 
@@ -99,11 +99,11 @@ You set the scene. You give the actors their motivations and the rules of the ga
 
 That variability is a feature. It's what makes AI AI.
 
-*[slide: Non-deterministic]*
+*[Non-deterministic]*
 
 You can't design for improvisation by drawing static screens. You need to be **in the room with the actors** — provoking them, testing their limits, seeing how they respond when you change the rules mid-scene.
 
-*[slide: The design environment has to be as dynamic as the thing you're designing]*
+*[The design environment has to be as dynamic as the thing you're designing]*
 
 That means working in code — hooking your interface to a live AI model, shaping the system prompt, and designing through conversation with the system itself. **The design environment has to be as dynamic as the thing you're designing.**
 
@@ -111,32 +111,32 @@ But if the system doesn't follow a script anymore — why should the user?
 
 ---
 
-*[slide: From Commands to Outcomes]*
+*[From Commands to Outcomes]*
 
 ### PARADIGM 2: FROM COMMANDS TO OUTCOMES
 
 Before AI, the user gave a specific instruction step by step.
 To book a hotel, you pick your filters, review photos, go through the checkout. 
 
-*[slide: booking.com filters]*
+*[booking.com filters]*
 
 Now you simply command it to your agent, and it books everything for you. 
 
-*[slide: conversational booking]*
+*[conversational booking]*
 
-*[slide: supermarket / chef]*
+*[supermarket / chef]*
 
 The old model was a **supermarket**. The designer put signs on the aisles and grouped the dairy together, so the user could find the ingredients, load the cart, drive home, and cook the meal yourself.
 
-*[slide: supermarket / chef]*
+*[supermarket / chef]*
 
 The new model is a **restaurant**. A chef comes to your table, asks what you're craving, and brings you the finished meal.
 
-*[slide: Intent-based interaction]*
+*[Intent-based interaction]*
 
 The interaction is now **intent-based**. You say what you want, the system figures out how.
 
-*[slide: Help articulating intent]*
+*[Help articulating intent]*
 
 And here's the first design challenge: humans are **terrible at articulating complex intent** in written prose. 
 
@@ -146,11 +146,11 @@ And here's the first design challenge: humans are **terrible at articulating com
 
 The designer is designing an environment that helps users **articulate their intent** better.
     
-*[slide: Help users overcome the blank box]*
+*[Help users overcome the blank box]*
 
 Designing the **prompting experience** is itself a design challenge. How do you help users overcome the blank text box? Do you give them options as a starting point? Ask follow-up questions? Suggest improvements instead of accepting everything at face value?
 
-*[slide: Should we even be typing?]*
+*[Should we even be typing?]*
 
 It reveals one truth about human communication: if typing our complex thoughts into a text box is really that difficult, maybe we shouldn't be typing at all.
 
@@ -162,37 +162,37 @@ The system fuses **three signals at once**. The camera reads the menu. The micro
 
 The glasses read the Dutch words back into your ear — slowly, so you can repeat it to the waiter.
 
-*[slide: Bitterballen quote]*
+*[Bitterballen quote]*
 
 "Ik wil graag Bitterballen, alstublieft."
 
 He still switches to English. Some things AI can't fix.
 
-*[slide: Meta glasses visual]*
+*[Meta glasses visual]*
 
 Vision, gesture, voice, screen, contextual data — all fused into **a single interface**. 
 
-*[slide: voice-gesture-screen-vision]*
+*[voice-gesture-screen-vision]*
 
 That pushes us beyond the text box entirely into the era of **multimodal, ambient interfaces**.
 
-*[slide: Multimodal UI]*
+*[Multimodal UI]*
 
 This isn't just future speculation.
 
-*[slide: Whisper Flow]*
+*[Whisper Flow]*
 
 I talk to my computer all the time with Whisper Flow for dictation. The entire UI I interact with is an "fn" button on my keyboard. I press it, hear a soft chime, see a small bubble activate and start recording everything I ramble into a microphone, then convert it into clean, polished text. I get tremendous value from this product, and **the UI is basically invisible**. 
 
-*[slide: minimal Whisper Flow UI, animated]*
+*[minimal Whisper Flow UI, animated]*
 
 But you cannot rely on pure voice alone. Humans need visual anchors. You want to glance at it before hitting send. You need **visual grounding**. 
 
-*[slide: When one modality fails, another takes over.]*
+*[When one modality fails, another takes over.]*
 
 The strongest interfaces are **hybrid**, they let modalities cover for each other. Voice fails in noise? Screen takes over. Display unreadable in sunlight? Audio narrates instead.
 
-*[slide: The screen isn't dying]*
+*[The screen isn't dying]*
 
 The screen isn't dying. It's being **enhanced with new modes of interaction**.
 
@@ -205,7 +205,7 @@ But in code, you connect to a voice model in minutes. And then the real design w
 
 ---
 
-*[slide: PERSONALISATION]*
+*[PERSONALISATION]*
 
 ### PARADIGM 4: PERSONALISATION
 
@@ -213,7 +213,7 @@ But taking input in new ways is only half the story. The next level is **anticip
 
 The most successful products adapt fluidly to their users — their preferences, their context — going as far as adapting to our psychology.
 
-*[slide: Netflix]*
+*[Netflix]*
 
 Think of Netflix. We all know Netflix tracks our viewing habits and we generally accept it. 
 It doesn't just recommend relevant shows. It actively **alters the thumbnail artwork** based on your psychological profile.
@@ -221,7 +221,7 @@ It doesn't just recommend relevant shows. It actively **alters the thumbnail art
 If the system defines you as an action lover, the thumbnail shows an explosion.
 If it knows you prefer romance, the same movie appears with two actors making eye contact in pastel tones.
 
-*[slide: Netflix thumbnail example]*
+*[Netflix thumbnail example]*
 
 That works because the **social contract is clear**. You know Netflix tracks your viewing habits, and you accept that trade-off.
 
@@ -253,17 +253,17 @@ For example, give users a **memory dashboard** — a visible, editable record of
 
 *[In the era of...]*
 
-*[slide: So what does design craft mean?]*
+*[So what does design craft mean?]*
 
 So what does design craft mean?
 
 *[Design tools leave too many dimensions undefined.]*
 
-Our tools have always shaped our thinking. When all we had were visual design tools, we thought in screens. Voice existed for years — we just never designed for it, because **our tools couldn't express it**.
+Our tools have always shaped our thinking. When all we had were visual design tools, we optimised screens. Voice existed for years — we just never considered it, because **our tools couldn't express it**.
 
 *[...limiting our thinking to the purely visual.]*
 
-But it does not cut it anymore. Now our design toolbox should include live AI models, voice, vision, agents. And **the moment you can build with these materials, you start designing with them**.
+But it does not cut it anymore. Now our design toolbox should include live AI models, real APIs, real data. And **the moment you can build with these materials, you start designing with them**.
 
 *[Now we can prototype with: "The new design materials" — LLMs, Voice models, Vision models, Agents]*
 
@@ -271,11 +271,13 @@ But it does not cut it anymore. Now our design toolbox should include live AI mo
 
 **The craft isn't pixels anymore. It's systems.**
 
-Connected systems that span voice, vision, memory, reasoning — and sometimes the best design decision is **completely invisible**.
+Connected systems that span modalities, memory, reasoning. Even when the best design decision is **completely invisible**.
 
-You cannot design these experiences in static tools. You have to build them. That means **code is now a design skill**. Not optional. Not a nice-to-have. A core competency.
+You cannot design these experiences in static tools. You have to build them. That means **code is now a design skill**. Not optional. Not a nice-to-have. A core competency. 
 
 To shape AI-powered experiences, you need to understand the technology underneath — how models think, where they fail, what they can and can't do. That understanding is what separates **designing for AI from decorating around it**.
+
+The good news - coding with AI has just became so much easier. 
 
 *[Code is a design skill.]*
 
