@@ -6,7 +6,6 @@ import SlideNavigator from './components/SlideNavigator'
 import CoverSlide from './slides/CoverSlide'
 import TitleSlide from './slides/TitleSlide'
 import LightBulbSlide from './slides/LightBulbSlide'
-import WorkflowToolsRolesSlide from './slides/WorkflowToolsRolesSlide'
 import NotWhyHereSlide from './slides/NotWhyHereSlide'
 import BuildProductSlide from './slides/BuildProductSlide'
 import ClaudeCodeSlide from './slides/ClaudeCodeSlide'
@@ -35,7 +34,6 @@ import SmartGlassesSlide from './slides/SmartGlassesSlide'
 import ModalitiesCircleSlide from './slides/ModalitiesCircleSlide'
 import FnKeySlide from './slides/FnKeySlide'
 import GoogleLensVideoSlide from './slides/GoogleLensVideoSlide'
-import FailureModeSlide from './slides/FailureModeSlide'
 import MetasSolutionSlide from './slides/MetasSolutionSlide'
 import Paradigm2TakeawaySlide from './slides/Paradigm2TakeawaySlide'
 import PersonalisationSlide from './slides/PersonalisationSlide'
@@ -46,16 +44,6 @@ import ConcernDataSlide from './slides/ConcernDataSlide'
 import DesignAroundThatSlide from './slides/DesignAroundThatSlide'
 import MemoryDesignMaterialSlide from './slides/MemoryDesignMaterialSlide'
 import MemoryDashboardSlide from './slides/MemoryDashboardSlide'
-import GenerativeUISlide from './slides/GenerativeUISlide'
-import GenerativeUIImageSlide from './slides/GenerativeUIImageSlide'
-import AgenticAISlide from './slides/AgenticAISlide'
-import WhoUsesYourProductSlide from './slides/WhoUsesYourProductSlide'
-import UserHasEyesAndFingersSlide from './slides/UserHasEyesAndFingersSlide'
-import AgentsPrimaryUsersSlide from './slides/AgentsPrimaryUsersSlide'
-import AgentsOnYourBehalfSlide from './slides/AgentsOnYourBehalfSlide'
-import AgentSafetyQuestionsSlide from './slides/AgentSafetyQuestionsSlide'
-import PerplexityVideoSlide from './slides/PerplexityVideoSlide'
-import ComplementNotReplaceSlide from './slides/ComplementNotReplaceSlide'
 import WhatCraftMeansNowSlide from './slides/WhatCraftMeansNowSlide'
 import FourConceptsMinimalSlide from './slides/FourConceptsMinimalSlide'
 import VisualToolsUndefinedSlide from './slides/VisualToolsUndefinedSlide'
@@ -77,7 +65,6 @@ const slides = [
   AppStoreScreensSlide,
   ChangesEverythingSlide,
   ThreeTrendsSlide,
-  WorkflowToolsRolesSlide,
   NotWhyHereSlide,
   GenieAiSlide,
   ClaudeCodeSlide,
@@ -99,7 +86,6 @@ const slides = [
   ModalitiesCircleSlide,
   FnKeySlide,
   GoogleLensVideoSlide,
-  FailureModeSlide,
   MetasSolutionSlide,
   Paradigm2TakeawaySlide,
   PersonalisationSlide,
@@ -110,16 +96,6 @@ const slides = [
   DesignAroundThatSlide,
   MemoryDesignMaterialSlide,
   MemoryDashboardSlide,
-  GenerativeUISlide,
-  GenerativeUIImageSlide,
-  AgenticAISlide,
-  WhoUsesYourProductSlide,
-  UserHasEyesAndFingersSlide,
-  AgentsPrimaryUsersSlide,
-  AgentsOnYourBehalfSlide,
-  AgentSafetyQuestionsSlide,
-  PerplexityVideoSlide,
-  ComplementNotReplaceSlide,
   WhatCraftMeansNowSlide,
   FourConceptsMinimalSlide,
   VisualToolsUndefinedSlide,
@@ -141,7 +117,6 @@ const slideLabels = [
   'App Store screens',
   'This changes everything',
   'Three trends',
-  'Workflow, tools, roles',
   'Not why I’m here',
   'Genie AI',
   'Claude Code',
@@ -163,9 +138,8 @@ const slideLabels = [
   'Modalities circle',
   'Fn key',
   'Google Lens',
-  'Failure mode',
   'Meta’s solution',
-  'Paradigm 2 takeaway',
+  'Paradigm 3 takeaway',
   'Personalisation',
   'Netflix',
   'Personalisation expanding',
@@ -174,16 +148,6 @@ const slideLabels = [
   'Design around that?',
   'Memory as design material',
   'Memory dashboard',
-  'Generative UI',
-  'Generative UI examples',
-  'Agentic AI',
-  'Who uses your product?',
-  'Eyes and fingers',
-  'Agents as primary users',
-  'On your behalf',
-  'Agent safety boundaries',
-  'Perplexity video',
-  'Complement, not replace',
   'What craft means now',
   'Four concepts',
   'Undefined dimensions',
@@ -384,8 +348,7 @@ export default function App() {
             slides[current] === SmartGlassesSlide ||
             slides[current] === GoogleLensVideoSlide ||
             slides[current] === NetflixSlide ||
-            slides[current] === ClaudeCodeSlide ||
-            slides[current] === PerplexityVideoSlide
+            slides[current] === ClaudeCodeSlide
               ? { padding: 0, alignItems: 'stretch' }
               : undefined
           }

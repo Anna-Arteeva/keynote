@@ -56,9 +56,6 @@ export default function MetasSolutionSlide() {
           another takes over.
         </Title>
         <div style={{ height: '1.8vh' }} />
-        <Subtitle size="sm" delay={0.8} style={{ textAlign: 'left', maxWidth: 380 }}>
-        The future is in hybrid interfaces.
-        </Subtitle>
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(14px, 1.8vh, 18px)' }}>

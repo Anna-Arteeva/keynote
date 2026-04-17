@@ -17,7 +17,7 @@ export default function MemoryDesignMaterialSlide() {
       </Title>
       <div style={{ height: '1.6vh' }} />
       <Subtitle size="md" delay={1} style={{ textAlign: 'left', maxWidth: 660 }}>
-        Not as hidden infrastructure. As something users can inspect, correct, and trust.
+      to build trust instead of eroding it.
       </Subtitle>
     </div>
   )

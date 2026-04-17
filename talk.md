@@ -35,17 +35,11 @@ I thought, what do I have to lose? Three days later, I had built my app. It look
 
 And I never opened it again.
 
-**Because I realised this vibe-coding thing was so much bigger than my silly app.**
+**Because I realised that my visually polished app offers a learning experience of the past, not of the future.
 
 *[Slide: Three changes that made this talk inevitable.]*
 
-Now you wouldn't surprise anyone with that story. AI prototyping is becoming standard in design and product roles. I've had people cancel their Figma subscriptions in the middle of my course. Some companies claim their designers now own the front-end entirely. 
-
-So: the workflow is changing. The tools are changing. The roles are changing—everyone is becoming a builder.
-
-*[slide: Workflow / Tools / Roles]*
-
-That's the story everyone is telling right now.
+Now you wouldn't surprise anyone with that story. AI prototyping is becoming standard requirement for design and product roles. I've had people cancel their Figma subscriptions in the middle of my course. Some companies claim their designers now own the front-end entirely. 
 
 *[It's not why I'm here.]*
 
@@ -57,11 +51,11 @@ It is not the story I came to Rotterdam to tell.
 
 Have you thought about this.
 
-We can now build—entirely ourselves, as designers—the most visually polished interfaces that have ever existed. Silk-smooth micro-interactions. Shaders that stop your scroll. Motion that would have taken a team a month—vibe-coded in an afternoon. We can do it ourselves, without compromising for developers.
+We can now build—entirely ourselves, as designers—the most visually polished interfaces that have ever existed. Silk-smooth animations. Polished micro-interactions. Shaders that stop your scroll. Effects that would have taken a team a month—vibe-coded in a single afternoon. We can do it ourselves, without compromising for developers.
 
 *[slide: video or beautiful interaction]*
 
-And yet, the fastest-growing product interface right now has no UI at all. 
+And yet, the fastest-growing product product right now has no UI at all. 
 
 A terminal.
 
@@ -69,20 +63,19 @@ A terminal.
 
 Claude Code is the *fastest-growing software products ever reported*. It went viral not only with developers, but with non-technical users. People who had never opened a terminal in their lives, happily talking to a command line.
 
-What makes a black screen so appealing? Claude Code is an agentic tool that sits inside your computer. You tell it what you want in plain English, and it autonomously does the research, creates a solution, fixes its own mistakes and publishes the end result. *It is doing the work for you.*  
+What makes a black screen so appealing? Claude Code does the actual work for you. You tell it what you want in plain English, and it autonomously does the research, creates a solution, fixes its own mistakes and publishes the end result. *It is doing the work for you.*  
 
 *[slide #15: You tell it." / "It does it.]*
 
-Do you see the the irony? If we have the power to build beautiful visual interfaces, why is a plain text terminal winning? It's because a beautiful visual interface still requires you to do the manual labour, you know, clicking, navigating, executing. You still have to drive the car. The text terminal is winning because the machine is finally executing on our behalf.
-
+Do you see the the irony? If we have the power to build beautiful visual interfaces, why is a plain text terminal winning? It's because a beautiful visual interface still requires you to do the manual labour – clicking, navigating, executing. You still have to drive the car. The text terminal is winning because the machine is finally executing on our behalf.
 
 *[The real mission is bigger than workflow.]*
 
-The real mission is bigger than workflow. This is not only about how we build software. It's about what we're building.
+The real shift is bigger than workflow. This is not only about how we build software. It's about what we're building.
 
-The very nature of the experiences we design has fundamentally changed.
+The very nature of the experiences we design is fundamentally changing. 
 
-We're moving away from predictable static screens and into a world of connected AI systems. 
+We're moving away from predictable screens and into a world of fluid connected AI systems.
 
 That's what I want to talk about today.
 
@@ -97,7 +90,7 @@ Until recently, we operated on a simple model.
 
 *[slide: input A-> output B ]*
 
-The system gave you the exact same predetermined response every time you took an action. Every single time. Input A equals output B. It was deterministic.
+The system gave you the exact same predetermined response every time you took an action. Every single time. Input A equals output B. Systems were deterministic.
 
 *[slide: input A-> output B, C, D ]*
 
@@ -115,29 +108,24 @@ That variability is a feature. It's what makes AI AI.
 
 *[ slide: Non-determenistic]*
 
-Take my language learning app. The old version shipped the same fixed set of stories to everyone. Boring.
-
-The AI version generates a story that fits your situation. You're in a café in Rotterdam, you want to practice your coffee vocabulary — the app takes your context and writes a relevant story on the fly. You try it out on the waiter. He switches to English, of course, because we're in the Netherlands. But hey, you tried!
-
-And the vocabulary sticks, because it's tied to the moment you needed it.
-
-But in high-stakes domains—medicine, finance, law—that variance becomes dangerous. The machine doesn't know it's wrong.
-
-Your job is to decide where variability adds value, and where a conventional, deterministic experience is the better choice.
+To design for such an experience you need to be able to touch it, sense in, stress test, manipulate and adjust. 
+You can't do it in Figma, but in code you can simply hook up you app to an AI model with a single prompt, and go ahead designing the system prompt to make the model play with your rules you define. 
 
 ---
 
 *[ slide: From Commands to Outcomes]*
 ### PARADIGM 2: FROM COMMANDS TO OUTCOMES
 
-Before AI, the user gave a specific instruction, and the computer executed it step by step.
-To book a hotel, you go, pick your filters, review photos, go throught teh checkout. 
+Before AI, the user gave a specific instruction step by step.
+To book a hotel, you pick your filters, review photos, go through the checkout. 
 
 *[slide: booking.com filters]*
 
 now you simply command it to your agent, and it books everything for you. 
 
 *[slide: conversational booking OpenClaw]*
+
+There are two sides to it. First, how to make your website agent-friendly, and second, how to make it agentic. 
 
 *[slide: supermarket / chef]*
 
@@ -147,11 +135,9 @@ The old model was a supermarket. The designer put signs on the aisles and groupe
 
 The new model is a restaurant. A chef comes to your table, asks what you're craving, and brings you the finished meal.
 
-We have shifted to intent-based outcome specification.
+We have shifted to intent-based interfaces.
 
-You delegated your intent, and the system figured out the steps.
-
-*[ feel heavy, academical. Need concrete action point on how to take it into design practice.]*
+You tell the designer outcome, and the system figurs out the steps.
 
 *[slide: Help articulating intent]*
 And here's the first design challenge: humans are terrible at articulating complex intent in written prose. 
@@ -192,29 +178,32 @@ Visual scene, voice input, gaze coordinate—fused into a single actionable comm
 
 This isn't just future speculation.
 
-I talk to my computer all the time. I use my camera to translate restaurant menus from Dutch to English. I rely on voice commands from my GPS when I'm cycling.
-
-I use Whisper Flow for dictation. The entire UI I interact with is an "fn" button on my keyboard. I press it, hear a soft chime, see a small bubble activate. I get tremendous value from this product—and the entire interface is basically that.
+I talk to my computer all the time with Wisper Flow for dictation. The entire UI I interact with is an "fn" button on my keyboard. I press it, hear a soft chime, see a small bubble activate. I get tremendous value from this product—and the entire interface is basically that.
 
 *[slide: minimal Whisper Flow UI, animated]*
 
 But you cannot rely on pure voice alone. The articulation barrier is too high. Humans need **hybrid interfaces**. They need visual anchors.
 
-If you dictate a text message, there needs to be a way to glance at the result before it's sent. Without visual grounding, you don't discover the error until it's too late.
+*[ slide: When one modality fails, another takes over. ]*
 
-Meta's Ray-Ban glasses understood this. They integrate voice, camera, and display—but critically, when one modality fails, another compensates. Voice fails in noise? Conversation Focus enhances hearing. Display unreadable in sunlight? Audio narrates the information.
+Imagine you're dictating an important message to your boss while crossing a busy street. You want to glance at it before hitting send—not listen back to a robot reading it aloud. Without visual grounding, you don't catch the error until it's already out there.
 
-**No single modality failure kills the experience.**
+The strongest interfaces let modalities cover for each other. Voice fails in noise? Enhanced hearing takes over. Display unreadable in sunlight? Audio narrates instead.
 
+*[ slide: The screen isn't dying ]*
 The screen isn't dying. It's being enhanced with new modes of interaction.
 
 ---
 
+*[ slide: PERSONALISATION ]*
 ### PARADIGM 4: PERSONALISATION
 
-It's not new that modern systems maintain persistent memory. But the depth of personalisation is expanding in every direction.
+Modern systems maintain persistent memory — that's not new. What's new is how deep it goes.
 
-Take Netflix. It doesn't just recommend shows based on viewing history. It actively alters the thumbnail artwork based on your psychological profile.
+My language app gets better the more you use it, because it remembers everything. Your level. The words you keep forgetting. That you live in Rotterdam and order capucino, not filter coffee. The story it generates for you tomorrow is shaped by every story it generated before. Deep memory makes the app become a private tutor. 
+
+Netflix takes this further. We all know Netflix tracks our viewing habits and we generally accept it. 
+It doesn't just recommend shows based on viewing history. It actively alters the thumbnail artwork based on your psychological profile.
 
 If the system knows you love action, the thumbnail shows an explosion.
 If it knows you prefer romance, the same movie appears with two actors making eye contact in pastel tones.
@@ -227,8 +216,6 @@ That works because the social contract is clear. You know Netflix tracks your vi
 
 But once these memory systems move into email, calendars, and workspaces, that contract starts to fray.
 
-Users want personalised experiences—until they realise what the system needs to know to deliver them.
-
 It's one thing for an AI to remember you like action films. It's another thing when your AI drafts an email to your boss in your exact tone of voice, referencing an inside joke from three weeks ago because it quietly read your Slack messages.
 
 So how do you design around that?
@@ -237,63 +224,10 @@ The emerging answer: stop treating memory as a hidden backend database. Start tr
 
 Give users a **memory dashboard**. A visible, editable record of what the AI believes about them. Something they can review and rewrite.
 
-Claude took this approach—memory is project-scoped, stored in transparent files, fully viewable and editable. ChatGPT went the opposite direction—on by default, a passive dossier, workarounds required to see your profile.
-
-The next level of personalisation is **generative U**I—where the interface itself adapts.
-
-*[slide: adaptive interface example]*
-
-Google's Gemini 3 can design and code a custom interface in real-time for each prompt. Explaining the microbiome to a five-year-old produces giant colourful cartoon bacteria, tappable voice icons. The same prompt from a biology grad student produces phylogenetic trees and citation links.
-
-There is no master layout. The interface is ephemeral.
-
-Research showed users prefer these tailored interfaces to static websites **90% of the time**.
-
-But imagine your banking app changed its layout every Friday based on what it guessed you wanted. One day, the transfer button is large and centred. The next day, it's a tiny link buried in a corner.
-
-Humans rely on spatial memory. We like knowing the steering wheel is always on the left.
-
-So what happens to shared digital culture if your app adapts perfectly to your mind, and mine adapts perfectly to mine? It's a design decision: how much of the interface should be fluid and adaptive, and how much should stay fixed.
-
----
-
-### PARADIGM 5: AGENTIC AI
-
-Who is actually using the product anymore?
-
-Us, or the AI?
-
-For fifty years, software design was built around the underlying assumption was that the user was a human being with eyes and fingers.
-
-But as AI agents become more autonomous, they are increasingly becoming the primary users of digital platforms. They're the ones navigating the web, scraping data, clicking buttons, and completing workflows on our behalf.
-
-We are entering the era of **AX**—the **agentic experience**.
-
-The term was coined in 2025 by Mathias Biilmann at Netlify.
-
-AI agents are now first-class users of digital products. They're logging in, navigating APIs, and executing workflows autonomously.
-
-We've spent decades perfecting human-computer interfaces. We made buttons look clickable. We added hover states, shadows, and micro-interactions.
-
-AI agents don't care about any of that.
-
-So what does it mean to design an interface for an AI?
-
-You design the system so that another piece of software can understand what it can do, where its boundaries are, and how to execute tasks without breaking anything.
-
-And this is where entirely new governance patterns emerge. We need to consider: what is safe for agents to do autonomously? What actions require human supervision? What should be reserved only for humans?
-
-*[slide: Stripe agentic payment example]*
-
-*[slide: OpenClaw example]*
-
-The core lesson: **agent experience must complement human experience, not replace it wholesale.**
-
----
 
 ### CONCLUSION: WHAT CRAFT MEANS NOW
 
-We've seen self-assembling screens. Probabilistic outputs. Deep memory. Multimodal systems. AI agents acting as users.
+We've covered a lot of ground. Probabilistic outputs. Intent-oriented design. Multimodal systems. Deep memory.
 
 So what does craft mean for the people building software?
 
@@ -305,15 +239,15 @@ Because designing for AI-powered experiences becomes impossible in conventional 
 
 Historically, design tools have limited our thinking to the purely visual. What was expected from designers was a set of annotated mockups—so we optimised and streamlined all our thinking into polishing those mockups, ignoring other dimensions of the experience. Voice as a mode of interaction has been available for years. It just wasn't available in our design tools, so we never thought of it as an option.
 
-Now we can easily build functional prototypes connected to actual thinking systems. LLMs. Voice models. Vision models. Agents.
+With AI-powered coding we can easily build visually stanning UI, but also connect it to actual thinking systems. LLMs. Voice models. Vision models. Agents.
 
 That naturally expands our thinking. It lets us create more ambient interactions that blend into people's context.
 
 It means we have to completely redefine what **craft** means in digital design.
 
-If craft once meant pushing pixels around a static canvas until the typography looked perfect, that is no longer enough.
+If craft for visual perfection is no longer enough.
 
-Craft today means thinking across all these dimensions—tools, modes of interaction, time, memory, agency—and finding the best solution for the problem. Even if the best solution is completely invisible.
+The craft is is to design connected systems across across all these modalities and modes of interaction, time, memory, reasononing. And striving for the best solution – even if the best solution is completely invisible.
 
 That's what craft looks like in 2026.
 

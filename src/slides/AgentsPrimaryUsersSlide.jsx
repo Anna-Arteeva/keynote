@@ -14,11 +14,7 @@ export default function AgentsPrimaryUsersSlide() {
       }}
     >
       <Title size="lg" delay={0.2}>
-        AI agents are becoming
-        <br />
-        the primary users
-        <br />
-        of digital platforms.
+        AI agents are first-class users.
       </Title>
     </div>
   )

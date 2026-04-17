@@ -4,7 +4,7 @@ const ease = [0.25, 0.1, 0.25, 1]
 
 const lines = [
   {
-    text: 'The real mission',
+    text: 'The real shift',
     fontSize: 'clamp(11px, 1vw, 14px)',
     fontFamily: "'Raleway', sans-serif",
     fontWeight: 700,
