@@ -186,6 +186,7 @@
   },
   "active": "680e2c447bf95df8",
   "lastOpenFiles": [
+    "talk.html",
     "dist/notes.html",
     "dist/index.html",
     "dist/assets/booking-BtipzMS8.mov",
@@ -206,7 +207,6 @@
     "dist/assets/client-CTQ0Ju4c.js",
     "dist/assets",
     "dist/notes-sw.js",
-    "dist/notes-manifest.json",
     "dist/talk.md",
     "public/talk.md",
     "node_modules/set-cookie-parser/README.md",

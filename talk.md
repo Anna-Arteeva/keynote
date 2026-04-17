@@ -154,17 +154,16 @@ Designing the **prompting experience** is itself a design challenge. How do you 
 
 *[slide: steering UI example]*
 
-It reveals one truth about human communication, because if typing our complex thoughts into a text box is really that difficult, maybe we shouldn't be typing at all. That pushes us beyond the glowing rectangle entirely into the era of multi-modal ambient interfaces.  They don't just rely on a keyboard; they fuse voice, gesture, vision, and contextual data simultaneously.
-
-
-
 ### PARADIGM 3: BEYOND THE SCREEN
+It reveals one truth about human communication, because if typing our complex thoughts into a text box is really that difficult, maybe we shouldn't be typing at all. That pushes us beyond the glowing rectangle entirely into the era of multi-modal ambient interfaces.  They don't just rely on a keyboard; they fuse voice, gesture, vision, and contextual data simultaneously.
 
 We're now in the **era of multimodal, ambient UI**.
 
 Let's go back to that café in Rotterdam. This time, you're wearing smart glasses. You point at an item on the menu and whisper, "how to order that in Dutch?"
 
+
 The system fuses three signals at once. The camera reads the menu. The microphone catches your question. Eye-tracking pins down what your pupils were locked onto the millisecond you said "that."
+"Ik wil graag kroketten, alstublieft."
 
 The glasses show you a photo of the dish and read the Dutch words back into your ear — slowly, so you can repeat it to the waiter.
 
