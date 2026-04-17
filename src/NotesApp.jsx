@@ -1,214 +1,232 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 
+// **text** → highlighted span
+function renderNotes(text) {
+  const parts = text.split(/(\*\*[^*]+\*\*)/)
+  return parts.map((part, i) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return <span key={i} style={{ color: '#c8b4ff' }}>{part.slice(2, -2)}</span>
+    }
+    return part
+  })
+}
+
 const sections = [
   {
-    title: 'OPENING',
-    notes: `I'm a designer, a design leader—and for the last year, I've had an accidental career of teaching designers and PMs how to build with AI.
-
-My journey started about 2 years ago.`,
     cue: 'the light bulb moment',
+    notes: `I'm a designer, a design leader\u2014and for the last year, I've had an accidental career of **teaching designers and PMs how to build with AI**.
+
+My journey into this started about 2 years ago. I'd spent a decade designing other people's products, and I thought: why not try to build my own?`,
   },
   {
-    title: 'BUILD A PRODUCT',
-    notes: `I'd spent a decade designing other people's products, and I thought: why not try to build my own?
+    cue: 'I decided to build a product \u2192 istorio screens',
+    notes: `I even convinced a senior engineer friend to join my venture.
 
-I even convinced a senior engineer friend to join my venture.`,
-    cue: 'I decided to build a product',
+We picked a simple idea\u2014a language-learning app. I played the design process by the book. One month interviewing potential users, putting together a beautiful prototype in Figma. Testing, iterating. Then he spent another month building it. And after that we had this`,
   },
   {
-    title: 'THE APP',
-    notes: `We picked a simple idea—a language-learning app. I played the design process by the book. One month interviewing potential users, putting together a beautiful prototype in Figma. Testing, iterating. Then he spent another month building it.
+    cue: 'the ugly product',
+    notes: `It looked nothing like my design. It could barely do anything.
 
-It looked nothing like my design. It could barely do anything.
+Slowly, we lost steam, went our separate ways.
 
-Slowly, we lost steam, went our separate ways.`,
-    cue: 'istorio screens → the ugly product',
+That would have been the end of the story, if I hadn't heard about **vibe-coding** right after that.`,
   },
   {
-    title: 'VIBE CODING',
-    notes: `That would have been the end of the story, if I hadn't heard about vibe-coding right after that.
-
-I thought, what do I have to lose? Three days later, I had built my app. It looked like my design. It did everything I wanted. A month later, I released it to the App Store.`,
     cue: 'Vibe coding',
+    notes: `I thought, what do I have to lose? **Three days later, I had built my app.** It looked like my design. It did everything I wanted it to do. A month later, I released it to the App Store.`,
   },
   {
-    title: 'THIS CHANGES EVERYTHING',
+    cue: 'This changes everything',
     notes: `And I never opened it again.
 
-Because I realised that my visually polished app offers a learning experience of the past, not of the future.`,
-    cue: 'This changes everything',
+Because I realised that my visually polished app offers **a learning experience of the past, not of the future**.`,
   },
   {
-    title: 'NOT WHY I\'M HERE',
-    notes: `Now you wouldn't surprise anyone with that story. AI prototyping is becoming standard requirement for design and product roles. I've had people cancel their Figma subscriptions in the middle of my course. Some companies claim their designers now own the front-end entirely.
+    cue: 'Three changes \u2192 It\u2019s not why I\u2019m here',
+    notes: `Now you wouldn't surprise anyone with that story. AI prototyping is becoming a standard requirement for design and product roles. I've had people cancel their Figma subscriptions in the middle of my course. Some companies claim their designers now own the front-end entirely.
 
 It is not the story I came to Rotterdam to tell.`,
-    cue: 'Three changes → It\'s not why I\'m here',
   },
   {
-    title: 'THE REAL SHIFT',
-    notes: `We can now build—entirely ourselves, as designers—the most visually polished interfaces that have ever existed. Silk-smooth animations. Polished micro-interactions. Shaders that stop your scroll. Effects that would have taken a team a month—vibe-coded in a single afternoon.
-
-And yet, the fastest-growing product right now has no UI at all. A terminal.`,
-    cue: 'beautiful interaction → Claude Code',
+    cue: 'video or beautiful interaction',
+    notes: `We can now vibe-code \u2014 entirely ourselves, as designers \u2014 the **most visually polished interfaces that have ever existed**. Silk-smooth animations. Polished micro-interactions. Shaders that stop your scroll. Effects that would have taken a team a month \u2014 vibe-coded in a single afternoon.`,
   },
   {
-    title: 'CLAUDE CODE',
-    notes: `Claude Code is the fastest-growing software product ever reported. It went viral not only with developers, but with non-technical users. People who had never opened a terminal in their lives, happily talking to a command line.
+    cue: 'Claude Code screenshot',
+    notes: `And yet, the fastest-growing product right now has **no UI at all**.
 
-What makes a black screen so appealing? It does the actual work for you. You tell it what you want in plain English, and it autonomously does the research, creates a solution, fixes its own mistakes and publishes the end result.`,
+A terminal.
+
+Claude Code is the **fastest-growing software product ever reported**. It went viral not only with developers, but with non-technical users. People who had never opened a terminal in their lives, happily talking to a command line.`,
+  },
+  {
     cue: 'You tell it. / It does it.',
+    notes: `What makes a black screen so appealing?
+
+The fact that Claude Code does **the actual work for you**. You tell it what you want in plain English, and it autonomously does the research, creates a solution, fixes its own mistakes and publishes the end result. **It is doing the work for you.**`,
   },
   {
-    title: 'THE IRONY',
-    notes: `Do you see the irony? If we have the power to build beautiful visual interfaces, why is a plain text terminal winning?
-
-It's because a beautiful visual interface still requires you to do the manual labour—clicking, navigating, executing. You still have to drive the car. The text terminal is winning because the machine is finally executing on our behalf.`,
-    cue: 'The real mission is bigger than workflow',
+    cue: 'The real shift is bigger than workflow',
+    notes: `Do you see the irony? If we have the power to build beautiful visual interfaces, why is a plain text terminal winning? It's because a beautiful visual interface still requires you to do the manual labour \u2014 clicking, navigating, executing. You still have to drive the car. The text terminal is winning because **the machine is finally executing on our behalf**.`,
   },
   {
-    title: 'THE REAL MISSION',
-    notes: `The real shift is bigger than workflow. This is not only about how we build software. It's about what we're building.
-
-The very nature of the experiences we design is fundamentally changing. We're moving away from predictable screens and into a world of fluid connected AI systems.
-
-I've identified new UX paradigms that define this new era.`,
-    cue: 'UX paradigms',
+    cue: 'UX paradigm',
+    notes: `But the moment the machine is doing the work, something fundamental changes. **You lose predictability**, taking me to the first UX paradigm that defines this new AI era.`,
   },
   {
-    title: '1 — SOFTWARE IS NO LONGER PREDICTABLE',
-    notes: `Until recently, we operated on a simple model. The system gave you the exact same predetermined response every time you took an action. Input A equals output B. Systems were deterministic.
+    title: 'SOFTWARE IS NO LONGER PREDICTABLE',
+    cue: 'input A \u2192 output B \u2192 output B, C, D',
+    notes: `Until recently, we operated on a simple model.
 
-Today, even if you provide the exact same input, an AI might produce wildly different outputs. It is non-deterministic.`,
-    cue: 'input A → output B → output B, C, D',
+The system gave you the exact same predetermined response every time you took an action. Every single time. Input A equals output B. Systems were **deterministic**.
+
+Today, even if you provide the exact same input, an AI might produce wildly different outputs. It is **non-deterministic**.`,
   },
   {
-    title: 'THEATER METAPHOR',
-    notes: `Traditional software design was like directing a scripted play. Every actor knew their lines. If someone forgot a line, that was a bug—you stopped the play to fix it.
+    cue: 'theatre \u2192 Non-deterministic',
+    notes: `Traditional software design was like directing a scripted play. Every actor knew their lines. The lighting director knew exactly when to hit the spotlight. If someone forgot a line, that was a bug \u2014 you stopped the play to fix it.
 
-Designing for AI is improvisational theatre. You set the scene. You give the actors their motivations and the rules of the game. But you do not control the lines they speak once the curtain goes up.
+**Designing for AI is improvisational theatre.**
+
+You set the scene. You give the actors their motivations and the rules of the game. But you do not control the lines they speak once the curtain goes up.
 
 That variability is a feature. It's what makes AI AI.`,
-    cue: 'theater → non-deterministic',
   },
   {
-    title: 'PROTOTYPE IN CODE',
-    notes: `To design for such an experience you need to be able to touch it, sense it, stress test, manipulate and adjust.
+    cue: 'The design environment has to be as dynamic as the thing you\u2019re designing',
+    notes: `You can't design for improvisation by drawing static screens. You need to be **in the room with the actors** \u2014 provoking them, testing their limits, seeing how they respond when you change the rules mid-scene.
 
-You can't do it in Figma, but in code you can simply hook up your app to an AI model with a single prompt, and go ahead designing the system prompt to make the model play with your rules.`,
-    cue: 'non-deterministic',
+That means working in code \u2014 hooking your interface to a live AI model, shaping the system prompt, and designing through conversation with the system itself. **The design environment has to be as dynamic as the thing you're designing.**
+
+But if the system doesn't follow a script anymore \u2014 why should the user?`,
   },
   {
-    title: '2 — FROM COMMANDS TO OUTCOMES',
+    title: 'FROM COMMANDS TO OUTCOMES',
+    cue: 'booking.com filters \u2192 conversational booking',
     notes: `Before AI, the user gave a specific instruction step by step. To book a hotel, you pick your filters, review photos, go through the checkout.
 
 Now you simply command it to your agent, and it books everything for you.`,
-    cue: 'booking.com filters → conversational booking',
   },
   {
-    title: 'SUPERMARKET → CHEF',
-    notes: `The old model was a supermarket. The designer put signs on the aisles and grouped the dairy together, so you—the shopper—could find the ingredients, load the cart, drive home, and cook the meal yourself.
+    cue: 'supermarket / chef \u2192 Intent-based interaction',
+    notes: `The old model was a **supermarket**. The designer put signs on the aisles and grouped the dairy together, so the user could find the ingredients, load the cart, drive home, and cook the meal yourself.
 
-The new model is a restaurant. A chef comes to your table, asks what you're craving, and brings you the finished meal.
+The new model is a **restaurant**. A chef comes to your table, asks what you're craving, and brings you the finished meal.
 
-We have shifted to intent-based interfaces. You tell the system the outcome, and it figures out the steps.`,
-    cue: 'supermarket / chef',
+The interaction is now **intent-based**. You say what you want, the system figures out how.`,
   },
   {
-    title: 'ARTICULATING INTENT',
-    notes: `Here's the first design challenge: humans are terrible at articulating complex intent in written prose.
-
-• Sometimes we lack the right industry vocabulary.
-• Sometimes we don't know where to start.
-• Sometimes we don't know what's relevant to mention.
-
-The designer is designing an environment that helps users articulate their intent better.`,
     cue: 'Help articulating intent',
+    notes: `And here's the first design challenge: humans are **terrible at articulating complex intent** in written prose.
+
+\u2022 Sometimes we lack the right industry vocabulary.
+\u2022 Sometimes we don't know where to start.
+\u2022 Sometimes we don't know what's relevant to mention.
+
+The designer is designing an environment that helps users **articulate their intent** better.`,
   },
   {
-    title: 'THE BLANK BOX',
-    notes: `Designing the prompting experience is itself a design challenge. How do you help users overcome the blank text box? Do you give them options as a starting point? Ask follow-up questions? Suggest improvements instead of accepting everything at face value?
+    cue: 'Help users overcome the blank box \u2192 Should we even be typing?',
+    notes: `Designing the **prompting experience** is itself a design challenge. How do you help users overcome the blank text box? Do you give them options as a starting point? Ask follow-up questions? Suggest improvements instead of accepting everything at face value?
 
-If typing our complex thoughts into a text box is really that difficult, maybe we shouldn't be typing at all. That pushes us beyond the glowing rectangle entirely into the era of multi-modal ambient interfaces.`,
-    cue: 'blank box → steering UI',
+It reveals one truth about human communication: if typing our complex thoughts into a text box is really that difficult, maybe we shouldn't be typing at all.`,
   },
   {
-    title: '3 — BEYOND THE SCREEN',
-    notes: `We're now in the era of multimodal, ambient UI.
+    title: 'BEYOND THE SCREEN',
+    cue: 'smart glasses \u2192 Bitterballen quote',
+    notes: `Imagine you are in a cafe in Rotterdam. You're wearing smart glasses. You point at an item on the menu and whisper, \u201chow do I order that in Dutch?\u201d
 
-Let's go back to that café in Rotterdam. This time, you're wearing smart glasses. You point at an item on the menu and whisper, "how to order that in Dutch?"
+The system fuses **three signals at once**. The camera reads the menu. The microphone catches your question. Eye-tracking pins down what your pupils were locked onto the millisecond you said \u201cthat.\u201d
 
-The system fuses three signals at once. The camera reads the menu. The microphone catches your question. Eye-tracking pins down what your pupils were locked onto the millisecond you said "that."
+The glasses read the Dutch words back into your ear \u2014 slowly, so you can repeat it to the waiter.
+
+\u201cIk wil graag Bitterballen, alstublieft.\u201d
 
 He still switches to English. Some things AI can't fix.`,
-    cue: 'Meta glasses visual',
   },
   {
-    title: 'WHISPER FLOW',
+    cue: 'Meta glasses \u2192 voice-gesture-screen \u2192 Multimodal UI',
+    notes: `Vision, gesture, voice, screen, contextual data \u2014 all fused into **a single interface**.
+
+That pushes us beyond the text box entirely into the era of **multimodal, ambient interfaces**.`,
+  },
+  {
+    cue: 'Whisper Flow',
     notes: `This isn't just future speculation.
 
-I talk to my computer all the time with Whisper Flow for dictation. The entire UI I interact with is an "fn" button on my keyboard. I press it, hear a soft chime, see a small bubble activate. I get tremendous value from this product—and the entire interface is basically that.
-
-But you cannot rely on pure voice alone. The articulation barrier is too high. Humans need hybrid interfaces. They need visual anchors.`,
-    cue: 'Whisper Flow UI → modalities',
+I talk to my computer all the time with Whisper Flow for dictation. The entire UI I interact with is an \u201cfn\u201d button on my keyboard. I press it, hear a soft chime, see a small bubble activate and start recording everything I ramble into a microphone, then convert it into clean, polished text. I get tremendous value from this product, and **the UI is basically invisible**.`,
   },
   {
-    title: 'MODALITIES COVER EACH OTHER',
-    notes: `Imagine you're dictating an important message to your boss while crossing a busy street. You want to glance at it before hitting send—not listen back to a robot reading it aloud.
+    cue: 'When one modality fails \u2192 The screen isn\u2019t dying',
+    notes: `But you cannot rely on pure voice alone. Humans need visual anchors. You want to glance at it before hitting send. You need **visual grounding**.
 
-The strongest interfaces let modalities cover for each other. Voice fails in noise? Enhanced hearing takes over. Display unreadable in sunlight? Audio narrates instead.
+The strongest interfaces are **hybrid**, they let modalities cover for each other. Voice fails in noise? Screen takes over. Display unreadable in sunlight? Audio narrates instead.
 
-The screen isn't dying. It's being enhanced with new modes of interaction.`,
-    cue: 'When one modality fails → screen isn\'t dying',
+The screen isn't dying. It's being **enhanced with new modes of interaction**.`,
   },
   {
-    title: '4 — PERSONALISATION',
-    notes: `Modern systems maintain persistent memory — that's not new. What's new is how deep it goes.
+    cue: 'design for this in code',
+    notes: `How do you design for this?
+\u2022 You can't sketch a voice interaction.
+\u2022 You can't mock up latency.
+\u2022 You can't wireframe the moment a synthetic voice pauses a beat too long and the whole experience feels uncanny.
 
-My language app gets better the more you use it, because it remembers everything. Your level. The words you keep forgetting. That you live in Rotterdam and order cappuccino, not filter coffee. Deep memory makes the app become a private tutor.`,
-    cue: 'PERSONALISATION',
+But in code, you connect to a voice model in minutes. And then the real design work begins \u2014 tuning response timing, shaping intonation, syncing the voice back to the visual UI. These are **design decisions**. Just the design tool is different.`,
   },
   {
-    title: 'NETFLIX',
-    notes: `Netflix doesn't just recommend shows based on viewing history. It actively alters the thumbnail artwork based on your psychological profile.
+    title: 'PERSONALISATION',
+    cue: 'Personalisation',
+    notes: `But taking input in new ways is only half the story. The next level is **anticipating what the user needs before they say it**.
 
-If the system knows you love action, the thumbnail shows an explosion. If it knows you prefer romance, the same movie appears with two actors making eye contact in pastel tones.
-
-The software adapts itself to your psychology. That works because the social contract is clear.`,
-    cue: 'Netflix thumbnail example',
+The most successful products adapt fluidly to their users \u2014 their preferences, their context \u2014 going as far as adapting to our psychology.`,
   },
   {
-    title: 'MEMORY AS DESIGN MATERIAL',
-    notes: `But once these memory systems move into email, calendars, and workspaces, that contract starts to fray.
+    cue: 'Netflix \u2192 Netflix thumbnail example',
+    notes: `Think of Netflix. We all know Netflix tracks our viewing habits and we generally accept it. It doesn't just recommend relevant shows. It actively **alters the thumbnail artwork** based on your psychological profile.
+
+If the system defines you as an action lover, the thumbnail shows an explosion. If it knows you prefer romance, the same movie appears with two actors making eye contact in pastel tones.
+
+That works because the **social contract is clear**. You know Netflix tracks your viewing habits, and you accept that trade-off.`,
+  },
+  {
+    cue: 'But what about your email\u2026 \u2192 Memory is a design material \u2192 Memory dashboard',
+    notes: `But once these memory systems move into email, calendars, and workspaces, **that contract starts to fray**.
 
 It's one thing for an AI to remember you like action films. It's another thing when your AI drafts an email to your boss in your exact tone of voice, referencing an inside joke from three weeks ago because it quietly read your Slack messages.
 
-Stop treating memory as a hidden backend database. Start treating memory itself as a design material—a way to build trust instead of eroding it.
+So how do you design for personalisation without eroding trust?
 
-Give users a memory dashboard. A visible, editable record of what the AI believes about them.`,
-    cue: 'design around that → memory dashboard',
+By treating **memory itself as a design material**.
+
+For example, give users a **memory dashboard** \u2014 a visible, editable record of what the AI believes about them, something they can review, correct, and rewrite.`,
   },
   {
     title: 'WHAT CRAFT MEANS NOW',
-    notes: `Even when designing for classic, non-AI experiences, working in purely visual tools left too many dimensions undefined. Micro-interactions. System response. Device specificities. That's why vibe-coding picked up so rapidly with the design community.
-
-Because designing for AI-powered experiences becomes impossible in conventional design tools.
-
-Historically, design tools have limited our thinking to the purely visual. Voice as a mode of interaction has been available for years. It just wasn't available in our design tools, so we never thought of it as an option.`,
-    cue: 'What craft means now',
+    cue: 'What Craft Means Now \u2192 So what does design craft mean?',
+    notes: `So what does design craft mean?`,
   },
   {
-    title: 'CONCLUSION',
-    notes: `With AI-powered coding we can easily build visually stunning UI, but also connect it to actual thinking systems. LLMs. Voice models. Vision models. Agents.
+    cue: 'Design tools leave too many dimensions undefined \u2192 Now we can prototype with\u2026',
+    notes: `Our tools have always shaped our thinking. When all we had were visual design tools, we thought in screens. Voice existed for years \u2014 we just never designed for it, because **our tools couldn't express it**.
 
-We have to completely redefine what craft means in digital design. Craft for visual perfection is no longer enough.
+But it does not cut it anymore. Now our design toolbox should include live AI models, voice, vision, agents. And **the moment you can build with these materials, you start designing with them**.`,
+  },
+  {
+    cue: 'The craft isn\u2019t pixels anymore \u2192 Code is a design skill',
+    notes: `**The craft isn't pixels anymore. It's systems.**
 
-The craft is to design connected systems across all these modalities and modes of interaction, time, memory, reasoning. And striving for the best solution—even if the best solution is completely invisible.
+Connected systems that span voice, vision, memory, reasoning \u2014 and sometimes the best design decision is **completely invisible**.
 
-That's what craft looks like in 2026.
+You cannot design these experiences in static tools. You have to build them. That means **code is now a design skill**. Not optional. Not a nice-to-have. A core competency.
 
-The question isn't whether to learn this. It's whether you want to design the future or be surprised by it.`,
-    cue: 'END',
+To shape AI-powered experiences, you need to understand the technology underneath \u2014 how models think, where they fail, what they can and can't do. That understanding is what separates **designing for AI from decorating around it**.`,
+  },
+  {
+    cue: 'Design the future \u2014 or be surprised by it',
+    notes: `This is what craft looks like in 2026.
+
+The question isn't whether to learn this. It's whether you want to **design the future \u2014 or be surprised by it**.`,
   },
 ]
 
@@ -315,32 +333,38 @@ export default function NotesApp() {
         paddingLeft: 'env(safe-area-inset-left)',
         paddingRight: 'env(safe-area-inset-right)',
       }}>
-        {/* Top bar */}
-        <div style={{
-          padding: '14px 20px',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          borderBottom: '1px solid rgba(255,255,255,0.06)',
-          flexShrink: 0,
+        {/* Restart button — fixed top-left */}
+        <button
+          onClick={() => go(0)}
+          style={{
+            position: 'fixed',
+            top: 'calc(6px + env(safe-area-inset-top))',
+            left: 'calc(10px + env(safe-area-inset-left))',
+            zIndex: 10,
+            background: 'none',
+            border: 'none',
+            color: 'rgba(255,255,255,0.2)',
+            fontSize: 14,
+            cursor: 'pointer',
+            padding: 4,
+            WebkitAppearance: 'none',
+          }}
+        >
+          &#x21BA;
+        </button>
+
+        {/* Slide counter — fixed top-right */}
+        <span style={{
+          position: 'fixed',
+          top: 'calc(8px + env(safe-area-inset-top))',
+          right: 'calc(12px + env(safe-area-inset-right))',
+          fontFamily: "'JetBrains Mono', monospace",
+          fontSize: 11,
+          color: 'rgba(255,255,255,0.2)',
+          zIndex: 10,
         }}>
-          <span style={{
-            fontSize: 11,
-            fontWeight: 600,
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-            color: 'rgba(255,255,255,0.3)',
-          }}>
-            Speaker Notes
-          </span>
-          <span style={{
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: 12,
-            color: 'rgba(255,255,255,0.25)',
-          }}>
-            {current + 1}/{total}
-          </span>
-        </div>
+          {current + 1}/{total}
+        </span>
 
         {/* Content */}
         <div style={{
@@ -348,7 +372,7 @@ export default function NotesApp() {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
-          padding: '32px 20px',
+          padding: '24px 20px',
           maxWidth: 640,
           margin: '0 auto',
           width: '100%',
@@ -359,34 +383,36 @@ export default function NotesApp() {
           <div style={{
             fontFamily: "'JetBrains Mono', monospace",
             fontSize: 11,
-            color: 'rgba(168, 140, 255, 0.6)',
-            marginBottom: 14,
+            color: 'rgba(168, 140, 255, 0.5)',
+            marginBottom: s.title ? 10 : 20,
             letterSpacing: '0.02em',
           }}>
             [{s.cue}]
           </div>
 
-          {/* Section title */}
-          <h1 style={{
-            fontSize: 13,
-            fontWeight: 600,
-            letterSpacing: '0.06em',
-            textTransform: 'uppercase',
-            color: 'rgba(255,255,255,0.45)',
-            marginBottom: 24,
-          }}>
-            {s.title}
-          </h1>
+          {/* Section title — only when it's a real slide title */}
+          {s.title && (
+            <h1 style={{
+              fontSize: 13,
+              fontWeight: 600,
+              letterSpacing: '0.06em',
+              textTransform: 'uppercase',
+              color: 'rgba(255,255,255,0.4)',
+              marginBottom: 24,
+            }}>
+              {s.title}
+            </h1>
+          )}
 
           {/* Notes text */}
           <div style={{
             fontSize: 18,
             lineHeight: 1.7,
             fontWeight: 400,
-            color: 'rgba(255,255,255,0.85)',
+            color: 'rgba(255,255,255,0.82)',
             whiteSpace: 'pre-wrap',
           }}>
-            {s.notes}
+            {renderNotes(s.notes)}
           </div>
         </div>
 
@@ -403,36 +429,7 @@ export default function NotesApp() {
             transition: 'width 0.3s ease',
           }} />
         </div>
-
-        {/* Bottom nav */}
-        <div style={{
-          padding: '10px 20px',
-          display: 'flex',
-          justifyContent: 'center',
-          gap: 8,
-          flexShrink: 0,
-        }}>
-          <button onClick={() => go(current - 1)} disabled={current === 0} style={btnStyle(current === 0)}>&larr;</button>
-          <button onClick={() => go(current + 1)} disabled={current === total - 1} style={btnStyle(current === total - 1)}>&rarr;</button>
-        </div>
       </div>
     </>
   )
-}
-
-function btnStyle(disabled) {
-  return {
-    width: 36,
-    height: 36,
-    borderRadius: 8,
-    border: '1px solid rgba(255,255,255,0.08)',
-    background: 'transparent',
-    color: disabled ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.5)',
-    fontSize: 16,
-    cursor: disabled ? 'default' : 'pointer',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    WebkitAppearance: 'none',
-  }
 }

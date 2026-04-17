@@ -20,6 +20,7 @@ import ThreeTrendsSlide from './slides/ThreeTrendsSlide'
 import FourParadigmsSlide from './slides/FourParadigmsSlide'
 import GenieAiSlide from './slides/GenieAiSlide'
 import NonDeterministicSlide from './slides/NonDeterministicSlide'
+import DynamicDesignEnvironmentSlide from './slides/DynamicDesignEnvironmentSlide'
 import InputOutputEveryTimeSlide from './slides/InputOutputEveryTimeSlide'
 import InputOutputVariedSlide from './slides/InputOutputVariedSlide'
 import TheaterSlide from './slides/TheaterSlide'
@@ -27,10 +28,13 @@ import FromCommandsToOutcomesSlide from './slides/FromCommandsToOutcomesSlide'
 import BookingVideoSlide from './slides/BookingVideoSlide'
 import PhoneFrameSlide from './slides/PhoneFrameSlide'
 import SupermarketSlide from './slides/SupermarketSlide'
+import IntentBasedInteractionSlide from './slides/IntentBasedInteractionSlide'
 import ArticulatingIntentSlide from './slides/ArticulatingIntentSlide'
 import BlankBoxSlide from './slides/BlankBoxSlide'
+import ShouldWeEvenBeTypingSlide from './slides/ShouldWeEvenBeTypingSlide'
 import MultimodalUISlide from './slides/MultimodalUISlide'
 import SmartGlassesSlide from './slides/SmartGlassesSlide'
+import BitterballenQuoteSlide from './slides/BitterballenQuoteSlide'
 import ModalitiesCircleSlide from './slides/ModalitiesCircleSlide'
 import FnKeySlide from './slides/FnKeySlide'
 import GoogleLensVideoSlide from './slides/GoogleLensVideoSlide'
@@ -45,12 +49,14 @@ import DesignAroundThatSlide from './slides/DesignAroundThatSlide'
 import MemoryDesignMaterialSlide from './slides/MemoryDesignMaterialSlide'
 import MemoryDashboardSlide from './slides/MemoryDashboardSlide'
 import WhatCraftMeansNowSlide from './slides/WhatCraftMeansNowSlide'
+import DesignCraftQuestionSlide from './slides/DesignCraftQuestionSlide'
 import FourConceptsMinimalSlide from './slides/FourConceptsMinimalSlide'
 import VisualToolsUndefinedSlide from './slides/VisualToolsUndefinedSlide'
 import VisualOnlyThinkingSlide from './slides/VisualOnlyThinkingSlide'
 import PrototypeWithModelsSlide from './slides/PrototypeWithModelsSlide'
 import FunctionalPrototypesExpandSlide from './slides/FunctionalPrototypesExpandSlide'
 import ConclusionQuestionSlide from './slides/ConclusionQuestionSlide'
+import DesignTheFutureSlide from './slides/DesignTheFutureSlide'
 import RealMissionSlide from './slides/RealMissionSlide'
 
 // Slide order: append new slides immediately before ThankYouSlide — closing slide must always be final.
@@ -75,15 +81,19 @@ const slides = [
   InputOutputVariedSlide,
   TheaterSlide,
   NonDeterministicSlide,
+  DynamicDesignEnvironmentSlide,
   FromCommandsToOutcomesSlide,
   BookingVideoSlide,
   PhoneFrameSlide,
   SupermarketSlide,
+  IntentBasedInteractionSlide,
   ArticulatingIntentSlide,
   BlankBoxSlide,
-  MultimodalUISlide,
+  ShouldWeEvenBeTypingSlide,
   SmartGlassesSlide,
+  BitterballenQuoteSlide,
   ModalitiesCircleSlide,
+  MultimodalUISlide,
   FnKeySlide,
   GoogleLensVideoSlide,
   MetasSolutionSlide,
@@ -97,12 +107,14 @@ const slides = [
   MemoryDesignMaterialSlide,
   MemoryDashboardSlide,
   WhatCraftMeansNowSlide,
+  DesignCraftQuestionSlide,
   FourConceptsMinimalSlide,
   VisualToolsUndefinedSlide,
   VisualOnlyThinkingSlide,
   PrototypeWithModelsSlide,
   FunctionalPrototypesExpandSlide,
   ConclusionQuestionSlide,
+  DesignTheFutureSlide,
   ThankYouSlide,
 ]
 
@@ -127,15 +139,19 @@ const slideLabels = [
   'Same input, different outputs',
   'Theater',
   'Non-deterministic',
+  'Dynamic design environment',
   'From Commands to Outcomes',
   'Booking',
   'Device',
   'Supermarket',
+  'Intent-based interaction',
   'Articulating intent',
   'Blank box',
-  'Multimodal UI',
+  'Should we even be typing?',
   'Smart glasses',
+  'Bitterballen quote',
   'Modalities circle',
+  'Multimodal UI',
   'Fn key',
   'Google Lens',
   'Meta’s solution',
@@ -149,6 +165,7 @@ const slideLabels = [
   'Memory as design material',
   'Memory dashboard',
   'What craft means now',
+  'So what does design craft mean?',
   'Four concepts',
   'Undefined dimensions',
   'Visual-only thinking',

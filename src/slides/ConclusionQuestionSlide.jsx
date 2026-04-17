@@ -4,8 +4,7 @@ export default function ConclusionQuestionSlide() {
   return (
     <SectionIntroSlide
       eyebrow="Conclusion"
-      title={`Do you want to design the future
-or be surprised by it?`}
+      title="Code is a design skill."
       titleSize="lg"
       accent="#cbb9ea"
       secondaryAccent="#f3d5c7"

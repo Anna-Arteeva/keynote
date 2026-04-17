@@ -4,7 +4,7 @@ export default function FunctionalPrototypesExpandSlide() {
   return (
     <SectionIntroSlide
       eyebrow="Takeaway"
-      title="Functional prototypes expand our thinking."
+      title="The craft isn't pixels anymore. It's systems."
       titleSize="lg"
       accent="#cbb9ea"
       secondaryAccent="#c6e3d8"

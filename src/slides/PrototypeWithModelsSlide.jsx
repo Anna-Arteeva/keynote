@@ -13,23 +13,23 @@ export default function PrototypeWithModelsSlide() {
       }}
     >
       <Title size="md" delay={0.1}>
-        Now we can prototype with:
+        The new design materials
       </Title>
       <Spacer size="md" />
       <div style={{ width: '100%', maxWidth: 680 }}>
         <BulletList
           startDelay={0.5}
           items={[
-            'AI functionality',
-            'Voice / vision models',
-            'Nuanced micro-interactions',
-            'Across devices',
+            'LLMs',
+            'Voice models',
+            'Vision models',
+            'Agents',
           ]}
         />
       </div>
       <Spacer size="md" />
       <Subtitle delay={1.4} size="sm" style={{ maxWidth: 'min(88vw, 760px)' }}>
-        ...and the sky is the limit.
+        Build with them to design with them.
       </Subtitle>
     </div>
   )
