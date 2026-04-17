@@ -15,9 +15,8 @@
       --accent: #111;
       --bg: #fafaf8;
       --rule: #e2e0dc;
-      --slide-bg: #f3f2ef;
-      --slide-border: #e2e0dc;
-      --slide-hover: #eae8e4;
+      --note-text: #999;
+      --note-accent: #666;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -30,21 +29,11 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    .page {
-      max-width: 1060px;
-      margin: 0 auto;
-      padding: 80px 40px 120px;
-      display: grid;
-      grid-template-columns: 1fr 200px;
-      gap: 48px;
-      align-items: start;
-    }
-
     article {
       max-width: 640px;
+      margin: 80px auto;
+      padding: 0 24px 120px;
     }
-
-    /* --- Typography --- */
 
     h1 {
       font-family: 'Instrument Serif', Georgia, serif;
@@ -83,25 +72,14 @@
       margin-bottom: 16px;
     }
 
-    p {
-      font-size: 1.0625rem;
-      margin-bottom: 20px;
-    }
-
+    p { font-size: 1.0625rem; margin-bottom: 20px; }
     strong { font-weight: 600; color: var(--accent); }
     em { font-style: italic; }
 
-    ul {
-      margin: 12px 0 20px 20px;
-      font-size: 1.0625rem;
-    }
+    ul { margin: 12px 0 20px 20px; font-size: 1.0625rem; }
     ul li { margin-bottom: 6px; }
 
-    hr {
-      border: none;
-      border-top: 1px solid var(--rule);
-      margin: 56px 0;
-    }
+    hr { border: none; border-top: 1px solid var(--rule); margin: 56px 0; }
 
     .pullquote {
       font-family: 'Instrument Serif', Georgia, serif;
@@ -113,315 +91,333 @@
       margin: 32px 0;
     }
 
-    /* --- Slide annotations (right column) --- */
+    /* --- Paragraphs with slide notes --- */
 
-    .slides-col {
-      position: sticky;
-      top: 40px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      padding-top: 100px;
+    .has-note {
+      position: relative;
     }
 
-    .slide-group-label {
-      font-size: 0.625rem;
+    .note {
+      font-size: 0.7rem;
+      line-height: 1.5;
+      color: var(--note-text);
+      letter-spacing: 0.01em;
+    }
+
+    .note .tag {
+      display: inline-block;
+      font-size: 0.575rem;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--muted);
-      margin-top: 16px;
-      margin-bottom: 2px;
-      padding-left: 10px;
+      letter-spacing: 0.06em;
+      color: #b0aba2;
+      background: #efeeeb;
+      padding: 1px 5px;
+      border-radius: 3px;
+      margin-right: 3px;
+      vertical-align: 1px;
     }
 
-    .slide-group-label:first-child {
-      margin-top: 0;
+    .note q {
+      font-style: italic;
+      color: var(--note-accent);
+      quotes: "\201C" "\201D";
     }
 
-    .slide-link {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 10px;
-      border-radius: 6px;
-      background: transparent;
-      text-decoration: none;
-      color: var(--text);
-      font-size: 0.75rem;
-      font-weight: 500;
-      line-height: 1.3;
-      transition: background 0.15s ease;
-    }
-
-    .slide-link:hover {
-      background: var(--slide-hover);
-    }
-
-    .slide-num {
-      flex-shrink: 0;
-      width: 20px;
-      height: 20px;
-      border-radius: 4px;
-      background: var(--slide-bg);
-      border: 1px solid var(--slide-border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.6rem;
-      font-weight: 600;
-      color: var(--muted);
-    }
-
-    /* --- Responsive --- */
-
-    @media (max-width: 860px) {
-      .page {
-        grid-template-columns: 1fr;
-        padding: 40px 24px 80px;
-        gap: 0;
+    /* Wide screens: float notes in right margin, aligned to their paragraph */
+    @media (min-width: 1060px) {
+      .note {
+        position: absolute;
+        top: 3px;
+        left: calc(100% + 32px);
+        width: 200px;
       }
-      .slides-col { display: none; }
+    }
+
+    /* Medium screens: inline below paragraph */
+    @media (max-width: 1059px) and (min-width: 601px) {
+      .note {
+        display: block;
+        margin: -8px 0 16px 0;
+        padding-left: 16px;
+        border-left: 2px solid #eee;
+      }
+    }
+
+    /* Small screens: hide notes */
+    @media (max-width: 600px) {
+      article { margin: 40px auto; }
       h1 { font-size: 2rem; }
       h2 { font-size: 1.4rem; }
       p, ul { font-size: 1rem; }
+      .note { display: none; }
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <article>
-      <h1>Beyond Pixels: Designing for the AI-Native Era</h1>
-      <p class="subtitle">Conference Talk Script</p>
+  <article>
+    <h1>Beyond Pixels: Designing for the AI-Native Era</h1>
+    <p class="subtitle">Conference Talk Script</p>
 
-      <h3>Opening</h3>
+    <h3>Opening</h3>
 
-      <p>I&rsquo;m a designer, a design leader&mdash;and for the last year, I&rsquo;ve had an accidental career of teaching designers and PMs how to build with AI.</p>
+    <p>I&rsquo;m a designer, a design leader&mdash;and for the last year, I&rsquo;ve had an accidental career of teaching designers and PMs how to build with AI.</p>
 
-      <p>My journey into this started about two years ago. I&rsquo;d spent a decade designing other people&rsquo;s products, and I thought: why not try to build my own?</p>
+    <p>My journey into this started about two years ago. I&rsquo;d spent a decade designing other people&rsquo;s products, and I thought: why not try to build my own?</p>
 
-      <p>I even convinced a senior engineer friend to join my venture. We picked a simple idea&mdash;a language-learning app. I played the design process by the book. One month interviewing potential users, putting together a beautiful prototype in Figma. Testing, iterating. Then he spent another month building it.</p>
+    <p class="has-note">I even convinced a senior engineer friend to join my venture. We picked a simple idea&mdash;a language-learning app. I played the design process by the book. One month interviewing potential users, putting together a beautiful prototype in Figma. Testing, iterating. Then he spent another month building it.
+      <span class="note"><span class="tag">slide</span> Istorio app screens &mdash; the polished Figma prototype</span>
+    </p>
 
-      <p>It looked nothing like my design. It could barely do anything.</p>
+    <p class="has-note">It looked nothing like my design. It could barely do anything.
+      <span class="note"><span class="tag">slide</span> The ugly product &mdash; what the engineer actually built</span>
+    </p>
 
-      <p>Slowly, we lost steam, went our separate ways.</p>
+    <p>Slowly, we lost steam, went our separate ways.</p>
 
-      <p>That would have been the end of the story, if I hadn&rsquo;t heard about vibe-coding right after that. I thought, what do I have to lose? Three days later, I had built my app. It looked like my design. It did everything I wanted it to do. A month later, I released it to the App Store.</p>
+    <p class="has-note">That would have been the end of the story, if I hadn&rsquo;t heard about vibe-coding right after that. I thought, what do I have to lose? Three days later, I had built my app. It looked like my design. It did everything I wanted it to do. A month later, I released it to the App Store.
+      <span class="note"><span class="tag">slide</span> App Store screenshots &mdash; the shipped product</span>
+    </p>
 
-      <p>And I never opened it again.</p>
+    <p>And I never opened it again.</p>
 
-      <p class="pullquote">Because I realised that my visually polished app offers a learning experience of the past, not of the future.</p>
+    <p class="pullquote">Because I realised that my visually polished app offers a learning experience of the past, not of the future.</p>
 
-      <p>Now you wouldn&rsquo;t surprise anyone with that story. AI prototyping is becoming a standard requirement for design and product roles. I&rsquo;ve had people cancel their Figma subscriptions in the middle of my course. Some companies claim their designers now own the front-end entirely.</p>
+    <p>Now you wouldn&rsquo;t surprise anyone with that story. AI prototyping is becoming a standard requirement for design and product roles. I&rsquo;ve had people cancel their Figma subscriptions in the middle of my course. Some companies claim their designers now own the front-end entirely.</p>
 
-      <p>It is not the story I came to Rotterdam to tell.</p>
+    <p>It is not the story I came to Rotterdam to tell.</p>
 
-      <hr>
+    <hr>
 
-      <h2>The Real Shift</h2>
+    <h2>The Real Shift</h2>
 
-      <p>Have you thought about this.</p>
+    <p>Have you thought about this.</p>
 
-      <p>We can now build&mdash;entirely ourselves, as designers&mdash;the most visually polished interfaces that have ever existed. Silk-smooth animations. Polished micro-interactions. Shaders that stop your scroll. Effects that would have taken a team a month&mdash;vibe-coded in a single afternoon. We can do it ourselves, without compromising for developers.</p>
+    <p class="has-note">We can now vibe-code&mdash;entirely ourselves, as designers&mdash;the most visually polished interfaces that have ever existed. Silk-smooth animations. Polished micro-interactions. Shaders that stop your scroll. Effects that would have taken a team a month&mdash;vibe-coded in a single afternoon.
+      <span class="note"><span class="tag">slide</span> Video of a beautiful vibe-coded interaction</span>
+    </p>
 
-      <p>And yet, the fastest-growing product right now has no UI at all. A terminal.</p>
+    <p class="has-note">And yet, the fastest-growing product right now has no UI at all. A terminal.
+      <span class="note"><span class="tag">slide</span> Claude Code terminal screenshot</span>
+    </p>
 
-      <p>Claude Code is the <em>fastest-growing software product ever reported</em>. It went viral not only with developers, but with non-technical users. People who had never opened a terminal in their lives, happily talking to a command line.</p>
+    <p>Claude Code is the <em>fastest-growing software product ever reported</em>. It went viral not only with developers, but with non-technical users. People who had never opened a terminal in their lives, happily talking to a command line.</p>
 
-      <p>What makes a black screen so appealing? Claude Code does the actual work for you. You tell it what you want in plain English, and it autonomously does the research, creates a solution, fixes its own mistakes and publishes the end result. <strong>It is doing the work for you.</strong></p>
+    <p>What makes a black screen so appealing?</p>
 
-      <p>Do you see the irony? If we have the power to build beautiful visual interfaces, why is a plain text terminal winning? It&rsquo;s because a beautiful visual interface still requires you to do the manual labour&mdash;clicking, navigating, executing. You still have to drive the car. The text terminal is winning because the machine is finally executing on our behalf.</p>
+    <p class="has-note">The fact that Claude Code does the actual work for you. You tell it what you want in plain English, and it autonomously does the research, creates a solution, fixes its own mistakes and publishes the end result. <strong>It is doing the work for you.</strong>
+      <span class="note"><span class="tag">slide</span> <q>You tell it. It does it.</q> &mdash; typewriter on black</span>
+    </p>
 
-      <p class="pullquote">The real shift is bigger than workflow. This is not only about how we build software. It&rsquo;s about what we&rsquo;re building.</p>
+    <p>Do you see the irony? If we have the power to build beautiful visual interfaces, why is a plain text terminal winning? It&rsquo;s because a beautiful visual interface still requires you to do the manual labour&mdash;clicking, navigating, executing. You still have to drive the car. The text terminal is winning because the machine is finally executing on our behalf.</p>
 
-      <p>The very nature of the experiences we design is fundamentally changing. We&rsquo;re moving away from predictable screens and into a world of fluid connected AI systems.</p>
+    <p class="has-note">But the moment the machine is doing the work, something fundamental changes. You lose predictability, taking me to the first UX paradigms that define this new AI era.
+      <span class="note"><span class="tag">slide</span> <q>The real shift is bigger than workflow. It&rsquo;s about what we&rsquo;re building.</q></span>
+    </p>
 
-      <p>That&rsquo;s what I want to talk about today. I&rsquo;ve identified new UX paradigms that define this new era. Starting with the foundational truth that underpins everything that follows.</p>
+    <hr>
 
-      <hr>
+    <h2 class="has-note">Paradigm 1 &mdash; The Foundation: Software Is No Longer Predictable
+      <span class="note"><span class="tag">slide</span> <q>UX paradigms that define the AI-native era.</q></span>
+    </h2>
 
-      <h2>Paradigm 1 &mdash; The Foundation: Software Is No Longer Predictable</h2>
+    <p class="has-note">Until recently, we operated on a simple model. The system gave you the exact same predetermined response every time you took an action. Every single time. Input A equals output B. Systems were deterministic.
+      <span class="note"><span class="tag">slide</span> <q>Input A &rarr; Output B. Every single time.</q></span>
+    </p>
 
-      <p>Until recently, we operated on a simple model. The system gave you the exact same predetermined response every time you took an action. Every single time. Input A equals output B. Systems were deterministic.</p>
+    <p class="has-note">Today, even if you provide the exact same input, an AI might produce wildly different outputs. It is <strong>non-deterministic</strong>.
+      <span class="note"><span class="tag">slide</span> Input A &rarr; Output B, C, D &mdash; multiple diverging paths</span>
+    </p>
 
-      <p>Today, even if you provide the exact same input, an AI might produce wildly different outputs. It is <strong>non-deterministic</strong>.</p>
+    <p class="has-note">Traditional software design was like directing a scripted play. Every actor knew their lines. The lighting director knew exactly when to hit the spotlight. If someone forgot a line, that was a bug&mdash;you stopped the play to fix it.
+      <span class="note"><span class="tag">slide</span> Theater photograph</span>
+    </p>
 
-      <p>Traditional software design was like directing a scripted play. Every actor knew their lines. The lighting director knew exactly when to hit the spotlight. If someone forgot a line, that was a bug&mdash;you stopped the play to fix it.</p>
+    <p class="pullquote">Designing for AI is improvisational theatre.</p>
 
-      <p class="pullquote">Designing for AI is improvisational theatre.</p>
+    <p>You set the scene. You give the actors their motivations and the rules of the game. But you do not control the lines they speak once the curtain goes up.</p>
 
-      <p>You set the scene. You give the actors their motivations and the rules of the game. But you do not control the lines they speak once the curtain goes up.</p>
+    <p class="has-note">That variability is a feature. It&rsquo;s what makes AI&nbsp;AI.
+      <span class="note"><span class="tag">slide</span> Section title: <q>Non-deterministic</q></span>
+    </p>
 
-      <p>That variability is a feature. It&rsquo;s what makes AI&nbsp;AI.</p>
+    <p class="has-note">You can&rsquo;t design for improvisation by drawing static screens. You need to be in the room with the actors&mdash;provoking them, testing their limits, seeing how they respond when you change the rules mid-scene.
+      <span class="note"><span class="tag">slide</span> <q>The design environment has to be as dynamic as the thing you&rsquo;re designing</q></span>
+    </p>
 
-      <p>To design for such an experience you need to be able to touch it, sense it, stress test, manipulate and adjust. You can&rsquo;t do it in Figma, but in code you can simply hook up your app to an AI model with a single prompt, and go ahead designing the system prompt to make the model play by the rules you define.</p>
+    <p>That means working in code&mdash;hooking your interface to a live AI model, shaping the system prompt, and designing through conversation with the system itself. The design environment has to be as dynamic as the thing you&rsquo;re designing.</p>
 
-      <hr>
+    <p>But if the system doesn&rsquo;t follow a script anymore&mdash;why should the user?</p>
 
-      <h2>Paradigm 2: From Commands to Outcomes</h2>
+    <hr>
 
-      <p>Before AI, the user gave a specific instruction step by step. To book a hotel, you pick your filters, review photos, go through the checkout.</p>
+    <h2 class="has-note">Paradigm 2: From Commands to Outcomes
+      <span class="note"><span class="tag">slide</span> Section title: <q>From Commands to Outcomes</q></span>
+    </h2>
 
-      <p>Now you simply command it to your agent, and it books everything for you.</p>
+    <p class="has-note">Before AI, the user gave a specific instruction step by step. To book a hotel, you pick your filters, review photos, go through the checkout.
+      <span class="note"><span class="tag">slide</span> Booking.com filter UI</span>
+    </p>
 
-      <p>There are two sides to it. First, how to make your website agent-friendly, and second, how to make it agentic.</p>
+    <p class="has-note">Now you simply command it to your agent, and it books everything for you.
+      <span class="note"><span class="tag">slide</span> Conversational agent booking on phone</span>
+    </p>
 
-      <p>The old model was a supermarket. The designer put signs on the aisles and grouped the dairy together, so you&mdash;the shopper&mdash;could find the ingredients, load the cart, drive home, and cook the meal yourself.</p>
+    <p class="has-note">The old model was a supermarket. The designer put signs on the aisles and grouped the dairy together, so the user could find the ingredients, load the cart, drive home, and cook the meal yourself.
+      <span class="note"><span class="tag">slide</span> Supermarket photo</span>
+    </p>
 
-      <p>The new model is a restaurant. A chef comes to your table, asks what you&rsquo;re craving, and brings you the finished meal.</p>
+    <p class="has-note">The new model is a restaurant. A chef comes to your table, asks what you&rsquo;re craving, and brings you the finished meal.
+      <span class="note"><span class="tag">slide</span> Chef photo</span>
+    </p>
 
-      <p>We have shifted to <strong>intent-based interfaces</strong>. You tell the system the outcome, and it figures out the steps.</p>
+    <p class="has-note">The interaction is now <strong>intent-based</strong>. You say what you want, the system figures out how.
+      <span class="note"><span class="tag">slide</span> <q>Intent-based interaction</q></span>
+    </p>
 
-      <p>And here&rsquo;s the first design challenge: humans are terrible at articulating complex intent in written prose.</p>
+    <p class="has-note">And here&rsquo;s the first design challenge: humans are terrible at articulating complex intent in written prose.
+      <span class="note"><span class="tag">slide</span> <q>Prompting experience is a design challenge.</q></span>
+    </p>
 
-      <ul>
-        <li>Sometimes we lack the right industry vocabulary.</li>
-        <li>Sometimes we don&rsquo;t know where to start.</li>
-        <li>Sometimes we don&rsquo;t know what&rsquo;s relevant to mention.</li>
-      </ul>
+    <ul>
+      <li>Sometimes we lack the right industry vocabulary.</li>
+      <li>Sometimes we don&rsquo;t know where to start.</li>
+      <li>Sometimes we don&rsquo;t know what&rsquo;s relevant to mention.</li>
+    </ul>
 
-      <p>The designer is designing an environment that helps users articulate their intent better.</p>
+    <p>The designer is designing an environment that helps users articulate their intent better.</p>
 
-      <p>Designing the <strong>prompting experience</strong> is itself a design challenge. How do you help users overcome the blank text box? Do you give them options as a starting point? Ask follow-up questions? Suggest improvements instead of accepting everything at face value?</p>
+    <p class="has-note">Designing the <strong>prompting experience</strong> is itself a design challenge. How do you help users overcome the blank text box? Do you give them options as a starting point? Ask follow-up questions? Suggest improvements instead of accepting everything at face value?
+      <span class="note"><span class="tag">slide</span> Chat-style blank box with three cards: Starting points? Follow-up questions? Suggestions?</span>
+    </p>
 
-      <p>It reveals one truth about human communication, because if typing our complex thoughts into a text box is really that difficult, maybe we shouldn&rsquo;t be typing at all. That pushes us beyond the glowing rectangle entirely into the era of multimodal ambient interfaces. They don&rsquo;t just rely on a keyboard; they fuse voice, gesture, vision, and contextual data simultaneously.</p>
+    <p class="has-note">It reveals one truth about human communication, because if typing our complex thoughts into a text box is really that difficult, maybe we shouldn&rsquo;t be typing at all.
+      <span class="note"><span class="tag">slide</span> <q>Should we even be typing?</q></span>
+    </p>
 
-      <hr>
+    <hr>
 
-      <h2>Paradigm 3: Beyond the Screen</h2>
+    <h2>Paradigm 3: Beyond the Screen</h2>
 
-      <p>We&rsquo;re now in the <strong>era of multimodal, ambient UI</strong>.</p>
+    <p class="has-note">Imagine, you are in a caf&eacute; in Rotterdam. You&rsquo;re wearing smart glasses. You point at an item on the menu and whisper, &ldquo;how to order that in Dutch?&rdquo;
+      <span class="note"><span class="tag">slide</span> Smart glasses POV &mdash; looking at a caf&eacute; menu</span>
+    </p>
 
-      <p>Let&rsquo;s go back to that caf&eacute; in Rotterdam. This time, you&rsquo;re wearing smart glasses. You point at an item on the menu and whisper, &ldquo;how to order that in Dutch?&rdquo;</p>
+    <p>The system fuses three signals at once. The camera reads the menu. The microphone catches your question. Eye-tracking pins down what your pupils were locked onto the millisecond you said &ldquo;that.&rdquo;</p>
 
-      <p>The system fuses three signals at once. The camera reads the menu. The microphone catches your question. Eye-tracking pins down what your pupils were locked onto the millisecond you said &ldquo;that.&rdquo;</p>
+    <p>The glasses read the Dutch words back into your ear&mdash;slowly, so you can repeat it to the waiter.</p>
 
-      <p>The glasses show you a photo of the dish and read the Dutch words back into your ear&mdash;slowly, so you can repeat it to the waiter.</p>
+    <p class="has-note">&ldquo;Ik wil graag Bitterballen, alstublieft.&rdquo;
+      <span class="note"><span class="tag">slide</span> <q>Ik wil graag Bitterballen, alstublieft.</q></span>
+    </p>
 
-      <p>He still switches to English. Some things AI can&rsquo;t fix.</p>
+    <p>He still switches to English. Some things AI can&rsquo;t fix.</p>
 
-      <p>Visual scene, voice input, gaze coordinate&mdash;fused into a single actionable command.</p>
+    <p class="has-note">Vision, gesture, voice, screen, contextual data simultaneously&mdash;all fused into a single interface.
+      <span class="note"><span class="tag">slide</span> Circle diagram: voice, gesture, screen, vision overlapping</span>
+    </p>
 
-      <p>This isn&rsquo;t just future speculation. I talk to my computer all the time with Whisper Flow for dictation. The entire UI I interact with is an &ldquo;fn&rdquo; button on my keyboard. I press it, hear a soft chime, see a small bubble activate. I get tremendous value from this product&mdash;and the entire interface is basically that.</p>
+    <p class="has-note">That pushes us beyond the text box entirely into the era of <strong>multimodal ambient interfaces</strong>.
+      <span class="note"><span class="tag">slide</span> <q>Multimodal UI</q></span>
+    </p>
 
-      <p>But you cannot rely on pure voice alone. The articulation barrier is too high. Humans need <strong>hybrid interfaces</strong>. They need visual anchors.</p>
+    <p class="has-note">This isn&rsquo;t just future speculation. I talk to my computer all the time with Whisper Flow for dictation. The entire UI I interact with is an &ldquo;fn&rdquo; button on my keyboard. I press it, hear a soft chime, see a small bubble activate and start recording everything I ramble into a microphone, then convert it into a clean polished text. I get tremendous value from this product, when the UI is basically invisible.
+      <span class="note"><span class="tag">slide</span> Whisper Flow &mdash; minimal floating bubble UI</span>
+    </p>
 
-      <p>Imagine you&rsquo;re dictating an important message to your boss while crossing a busy street. You want to glance at it before hitting send&mdash;not listen back to a robot reading it aloud. Without visual grounding, you don&rsquo;t catch the error until it&rsquo;s already out there.</p>
+    <p>But you cannot rely on pure voice alone. Humans need visual anchors. We need <strong>hybrid interfaces</strong>.</p>
 
-      <p>The strongest interfaces let modalities cover for each other. Voice fails in noise? Enhanced hearing takes over. Display unreadable in sunlight? Audio narrates instead.</p>
+    <p>Imagine you&rsquo;re dictating an important message to your boss while crossing a busy street. You want to glance at it before hitting send&mdash;not listen to a robot reading it aloud. You need visual grounding.</p>
 
-      <p class="pullquote">The screen isn&rsquo;t dying. It&rsquo;s being enhanced with new modes of interaction.</p>
+    <p>The strongest interfaces let modalities cover for each other. Voice fails in noise? Screen takes over. Display is unreadable in sunlight? Audio narrates instead.</p>
 
-      <hr>
+    <p class="has-note pullquote">The screen isn&rsquo;t dying. It&rsquo;s being enhanced with new modes of interaction.
+      <span class="note"><span class="tag">slide</span> <q>The screen isn&rsquo;t dying. It&rsquo;s being enhanced by voice, vision, gesture, and context.</q></span>
+    </p>
 
-      <h2>Paradigm 4: Personalisation</h2>
+    <p>How do you design for this?</p>
 
-      <p>Modern systems maintain persistent memory&mdash;that&rsquo;s not new. What&rsquo;s new is how deep it goes.</p>
+    <ul>
+      <li>You can&rsquo;t sketch a voice interaction.</li>
+      <li>You can&rsquo;t mockup latency.</li>
+      <li>You can&rsquo;t wireframe the moment a synthetic voice pauses a beat too long and the whole experience feels uncanny.</li>
+    </ul>
 
-      <p>My language app gets better the more you use it, because it remembers everything. Your level. The words you keep forgetting. That you live in Rotterdam and order cappuccino, not filter coffee. The story it generates for you tomorrow is shaped by every story it generated before. Deep memory makes the app become a private tutor.</p>
+    <p>But in code, you connect to a voice model in minutes. And then the real design work begins&mdash;tuning response timing, shaping intonation, syncing the voice back to the visual UI. These are design decisions. Just the design tool is different.</p>
 
-      <p>Netflix takes this further. We all know Netflix tracks our viewing habits and we generally accept it. It doesn&rsquo;t just recommend shows based on viewing history. It actively alters the thumbnail artwork based on your psychological profile.</p>
+    <hr>
 
-      <p>If the system knows you love action, the thumbnail shows an explosion. If it knows you prefer romance, the same movie appears with two actors making eye contact in pastel tones.</p>
+    <h2 class="has-note">Paradigm 4: Personalisation
+      <span class="note"><span class="tag">slide</span> Section title: <q>Personalisation</q></span>
+    </h2>
 
-      <p><strong>The software adapts itself to your psychology.</strong></p>
+    <p>But taking input in new ways is only half the story. The next level is anticipating what the user needs before they say it.</p>
 
-      <p>That works because the social contract is clear. You know Netflix tracks your viewing habits, and you accept that trade-off.</p>
+    <p class="has-note">The most successful products adapt fluidly to their users, their preferences and context, going as far as adapting itself to our psychology.
+      <span class="note"><span class="tag">slide</span> Netflix interface</span>
+    </p>
 
-      <p>But once these memory systems move into email, calendars, and workspaces, that contract starts to fray.</p>
+    <p>Think of Netflix. We all know Netflix tracks our viewing habits and we generally accept it. It doesn&rsquo;t just recommend relevant shows. It actively alters the thumbnail artwork based on your psychological profile.</p>
 
-      <p>It&rsquo;s one thing for an AI to remember you like action films. It&rsquo;s another thing when your AI drafts an email to your boss in your exact tone of voice, referencing an inside joke from three weeks ago because it quietly read your Slack messages.</p>
+    <p class="has-note">If the system defines you as an action lover, the thumbnail shows an explosion. If it knows you prefer romance, the same movie appears with two actors making eye contact in pastel tones.
+      <span class="note"><span class="tag">slide</span> Same movie, different thumbnails for different viewer profiles</span>
+    </p>
 
-      <p>So how do you design around that?</p>
+    <p class="has-note">That works because the social contract is clear. You know Netflix tracks your viewing habits, and you accept that trade-off.
+      <span class="note"><span class="tag">slide</span> <q>Netflix works because the deal is clear. You know they&rsquo;re watching. You accept the trade-off.</q></span>
+    </p>
 
-      <p>The emerging answer: stop treating memory as a hidden backend database. Start treating memory itself as a <strong>design material&mdash;a way to build trust instead of eroding it</strong>.</p>
+    <p class="has-note">But once these memory systems move into email, calendars, and workspaces, that contract starts to fray.
+      <span class="note"><span class="tag">slide</span> Email, calendar, Slack &mdash; where personalisation gets uncomfortable</span>
+    </p>
 
-      <p>Give users a <strong>memory dashboard</strong>. A visible, editable record of what the AI believes about them. Something they can review and rewrite.</p>
+    <p>It&rsquo;s one thing for an AI to remember you like action films. It&rsquo;s another thing when your AI drafts an email to your boss in your exact tone of voice, referencing an inside joke from three weeks ago because it quietly read your Slack messages.</p>
 
-      <hr>
+    <p>So how do you design for personalisation without eroding trust?</p>
 
-      <h2>Conclusion: What Craft Means Now</h2>
+    <p class="has-note">By treating memory itself as a <strong>design material</strong>.
+      <span class="note"><span class="tag">slide</span> <q>Memory is a design material.</q></span>
+    </p>
 
-      <p>We&rsquo;ve covered a lot of ground. Probabilistic outputs. Intent-oriented design. Multimodal systems. Deep memory.</p>
+    <p class="has-note">For example, give users a <strong>memory dashboard</strong>&mdash;a visible, editable record of what the AI believes about them, something they can review, correct, and rewrite.
+      <span class="note"><span class="tag">slide</span> Memory dashboard mockup &mdash; editable list of what the AI believes</span>
+    </p>
 
-      <p>So what does craft mean for the people building software?</p>
+    <hr>
 
-      <p>Even when designing for classic, non-AI experiences, working in purely visual tools left too many dimensions undefined. Micro-interactions. System response. Device specificities. That&rsquo;s why vibe-coding picked up so rapidly with the design community.</p>
+    <h2 class="has-note">Conclusion: What Craft Means Now
+      <span class="note"><span class="tag">slide</span> <q>What Craft Means Now</q></span>
+    </h2>
 
-      <p>And that builds the foundation for what&rsquo;s coming next.</p>
+    <p>We&rsquo;ve covered a lot of ground. Probabilistic outputs. Intent-oriented design. Multimodal systems. Deep memory.</p>
 
-      <p>Because designing for AI-powered experiences becomes impossible in conventional design tools.</p>
+    <p class="has-note">So what does design craft mean?
+      <span class="note"><span class="tag">slide</span> <q>So what does design craft mean?</q></span>
+    </p>
 
-      <p>Historically, design tools have limited our thinking to the purely visual. What was expected from designers was a set of annotated mockups&mdash;so we optimised and streamlined all our thinking into polishing those mockups, ignoring other dimensions of the experience. Voice as a mode of interaction has been available for years. It just wasn&rsquo;t available in our design tools, so we never thought of it as an option.</p>
+    <p class="has-note">Our tools have always shaped our thinking. When all we had were visual design tools, we thought in screens. Voice existed for years&mdash;we just never designed for it, because our tools couldn&rsquo;t express it.
+      <span class="note"><span class="tag">slide</span> <q>Design tools leave too many dimensions undefined.</q> Then: <q>..limiting our thinking to the purely visual.</q></span>
+    </p>
 
-      <p>With AI-powered coding we can easily build visually stunning UI, but also connect it to actual thinking systems. LLMs. Voice models. Vision models. Agents.</p>
+    <p class="has-note">But it does not cut it anymore. Now our design toolbox should include live AI models, voice, vision, agents. And the moment you can build with these materials, you start designing with them.
+      <span class="note"><span class="tag">slide</span> The new design materials: LLMs, Voice models, Vision models, Agents. <q>Build with them to design with them.</q></span>
+    </p>
 
-      <p>That naturally expands our thinking. It lets us create more ambient interactions that blend into people&rsquo;s context.</p>
+    <p class="pullquote">The craft isn&rsquo;t pixels anymore. It&rsquo;s systems.</p>
 
-      <p>It means we have to completely redefine what <strong>craft</strong> means in digital design.</p>
+    <p>Connected systems that span voice, vision, memory, reasoning&mdash;and sometimes the best design decision is completely invisible.</p>
 
-      <p>Visual perfection is no longer enough.</p>
+    <p class="has-note">You cannot design these experiences in static tools. You have to build them. That means code is now a design skill. Not optional. Not a nice-to-have. A core competency.
+      <span class="note"><span class="tag">slide</span> <q>Code is a design skill.</q></span>
+    </p>
 
-      <p class="pullquote">The craft is to design connected systems across all these modalities and modes of interaction, time, memory, reasoning. And striving for the best solution&mdash;even if the best solution is completely invisible.</p>
+    <p>To shape AI-powered experiences, you need to understand the technology underneath&mdash;how models think, where they fail, what they can and can&rsquo;t do. That understanding is what separates designing for AI from decorating around it.</p>
 
-      <p>That&rsquo;s what craft looks like in 2026.</p>
+    <p>This is what craft looks like in 2026.</p>
 
-      <p>The question isn&rsquo;t whether to learn this.</p>
-
-      <p><strong>It&rsquo;s whether you want to design the future or be surprised by it.</strong></p>
-    </article>
-
-    <nav class="slides-col" aria-label="Supporting slides">
-      <div class="slide-group-label">Opening</div>
-      <a class="slide-link" href="/LightBulbSlide"><span class="slide-num">3</span>Light bulb moment</a>
-      <a class="slide-link" href="/BuildProductSlide"><span class="slide-num">4</span>Build a product</a>
-      <a class="slide-link" href="/AppShowcaseSlide"><span class="slide-num">5</span>App showcase</a>
-      <a class="slide-link" href="/AfterTwoMonthsSlide"><span class="slide-num">6</span>After 2 months</a>
-      <a class="slide-link" href="/VibeCodingSlide"><span class="slide-num">7</span>Vibe coding</a>
-      <a class="slide-link" href="/AppStoreScreensSlide"><span class="slide-num">8</span>App Store screens</a>
-      <a class="slide-link" href="/ChangesEverythingSlide"><span class="slide-num">9</span>This changes everything</a>
-      <a class="slide-link" href="/ThreeTrendsSlide"><span class="slide-num">10</span>Three trends</a>
-
-      <div class="slide-group-label">The Real Shift</div>
-      <a class="slide-link" href="/GenieAiSlide"><span class="slide-num">12</span>Beautiful interaction</a>
-      <a class="slide-link" href="/ClaudeCodeSlide"><span class="slide-num">13</span>Claude Code</a>
-      <a class="slide-link" href="/YouTellItSlide"><span class="slide-num">14</span>You tell it. It does it.</a>
-      <a class="slide-link" href="/RealMissionSlide"><span class="slide-num">15</span>The real mission</a>
-      <a class="slide-link" href="/FourParadigmsSlide"><span class="slide-num">16</span>4 paradigms</a>
-
-      <div class="slide-group-label">Paradigm 1</div>
-      <a class="slide-link" href="/InputOutputEveryTimeSlide"><span class="slide-num">17</span>Input A &rarr; B</a>
-      <a class="slide-link" href="/InputOutputVariedSlide"><span class="slide-num">18</span>Same input, diff outputs</a>
-      <a class="slide-link" href="/TheaterSlide"><span class="slide-num">19</span>Theater</a>
-      <a class="slide-link" href="/NonDeterministicSlide"><span class="slide-num">20</span>Non-deterministic</a>
-
-      <div class="slide-group-label">Paradigm 2</div>
-      <a class="slide-link" href="/FromCommandsToOutcomesSlide"><span class="slide-num">22</span>Commands &rarr; Outcomes</a>
-      <a class="slide-link" href="/BookingVideoSlide"><span class="slide-num">23</span>Booking filters</a>
-      <a class="slide-link" href="/SupermarketSlide"><span class="slide-num">25</span>Supermarket vs Chef</a>
-      <a class="slide-link" href="/IntentBasedInteractionSlide"><span class="slide-num">26</span>Intent-based</a>
-      <a class="slide-link" href="/ArticulatingIntentSlide"><span class="slide-num">27</span>Articulating intent</a>
-      <a class="slide-link" href="/BlankBoxSlide"><span class="slide-num">28</span>Blank box</a>
-
-      <div class="slide-group-label">Paradigm 3</div>
-      <a class="slide-link" href="/SmartGlassesSlide"><span class="slide-num">30</span>Smart glasses</a>
-      <a class="slide-link" href="/ModalitiesCircleSlide"><span class="slide-num">32</span>Modalities circle</a>
-      <a class="slide-link" href="/FnKeySlide"><span class="slide-num">33</span>Whisper Flow</a>
-      <a class="slide-link" href="/GoogleLensVideoSlide"><span class="slide-num">34</span>Google Lens</a>
-      <a class="slide-link" href="/Paradigm2TakeawaySlide"><span class="slide-num">37</span>Screen isn&rsquo;t dying</a>
-
-      <div class="slide-group-label">Paradigm 4</div>
-      <a class="slide-link" href="/PersonalisationSlide"><span class="slide-num">38</span>Personalisation</a>
-      <a class="slide-link" href="/NetflixSlide"><span class="slide-num">39</span>Netflix thumbnails</a>
-      <a class="slide-link" href="/MemoryDesignMaterialSlide"><span class="slide-num">43</span>Memory as material</a>
-      <a class="slide-link" href="/MemoryDashboardSlide"><span class="slide-num">44</span>Memory dashboard</a>
-
-      <div class="slide-group-label">Conclusion</div>
-      <a class="slide-link" href="/WhatCraftMeansNowSlide"><span class="slide-num">45</span>What craft means now</a>
-      <a class="slide-link" href="/VisualOnlyThinkingSlide"><span class="slide-num">49</span>Visual-only thinking</a>
-      <a class="slide-link" href="/PrototypeWithModelsSlide"><span class="slide-num">50</span>Prototype with models</a>
-      <a class="slide-link" href="/DesignTheFutureSlide"><span class="slide-num">53</span>Design the future</a>
-    </nav>
-  </div>
+    <p class="has-note"><strong>The question isn&rsquo;t whether to learn this. It&rsquo;s whether you want to design the future&mdash;or be surprised by it.</strong>
+      <span class="note"><span class="tag">slide</span> <q>Design the future &mdash; or be surprised by it.</q></span>
+    </p>
+  </article>
 </body>
 </html>
