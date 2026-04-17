@@ -63,11 +63,11 @@ Claude Code is the **fastest-growing software product ever reported**. It went v
 
 What makes a black screen so appealing? 
 
-You tell it what you want in plain English. It does the research, creates a solution, fixes its own mistakes, and publishes the result. **It does the work for you**.
+You tell it what you want in plain English. It does the research, creates a solution, fixes its own mistakes, and publishes the result.
 
 *[slide: You tell it. / It does it.]*
 
-So why is a plain text terminal beating beautiful visual interfaces? Because a beautiful interface still requires you to click, navigate, execute. The terminal is winning because **the machine is finally doing the work on your behalf**.
+In the meantime a beautiful interface still requires you to click, navigate, execute. The terminal is winning because **it is doing the work for you**.
 
 *[The real shift is bigger than workflow.]*
 
